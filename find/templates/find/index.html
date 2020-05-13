@@ -20,13 +20,12 @@
                 </div>
                 <ul class="clearfix">
                     <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
-                    <li><h2><a href="#">재빈 이해하기</a></h2></li>
-                    <li><h2><a href="{% url 'food' %}">영양과 운동</a></h2></li>
+                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
                     <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
-                    <li><h2><a href="#">마이페이지</a></h2></li>
+                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
                 </ul>
                 <div class="time">
-                    <h2><a href="#">진료시간</a></h2>
+                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
                 </div>
             </nav>
         </header>

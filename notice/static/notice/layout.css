@@ -72,7 +72,7 @@ button {
         width: 100%;
         margin-top: 50px; }
     .wrap header nav {
-      width: 752px;
+      width: 662px;
       margin: 0 auto;
       margin-top: 40px; }
       .wrap header nav .find {
@@ -84,7 +84,7 @@ button {
           margin-top: 10px;
           margin-left: 10px; }
       .wrap header nav ul {
-        width: 600px;
+        width: 510px;
         height: 48px;
         background-color: #fff;
         border: 1px solid #f9f9f9; }
@@ -96,12 +96,12 @@ button {
           .wrap header nav ul li:nth-child(1) {
             width: 110px;
             margin-left: 40px; }
-          .wrap header nav ul li:nth-child(3) {
-            width: 90px; }
-          .wrap header nav ul li:nth-child(4) {
-            width: 70px; }
-          .wrap header nav ul li:nth-child(5) {
+          .wrap header nav ul li:nth-child(2) {
             width: 110px; }
+          .wrap header nav ul li:nth-child(3) {
+            width: 80px; }
+          .wrap header nav ul li:nth-child(4) {
+            width: 100px; }
       .wrap header nav .time {
         width: 100px;
         height: 50px;
@@ -113,7 +113,7 @@ button {
   .wrap .main {
     width: 100%;
     height: 330px;
-    background-image: url("../../static/food/img/main_img.png");
+    background-image: url("../../static/notice/img/main_img.png");
     background-position: center;
     background-repeat: no-repeat;
     margin-top: -18px; }
@@ -129,55 +129,68 @@ button {
       .wrap .main .main_wrap h3 {
         margin-top: 118px;
         margin-left: 420px; }
-  .wrap .food_list {
+  .wrap .doctor_notice {
     width: 1200px;
-    margin: 0 auto; }
-    .wrap .food_list h3 {
-      margin-top: 99px;
-      margin-left: 436px; }
-    .wrap .food_list form {
-      margin-top: 12px;
-      margin-left: 478px;
-      font-size: 14px;
-      font-weight: 400;
-      color: #dcdcdc; }
-      .wrap .food_list form input {
-        margin-top: 42px;
-        border: none;
-        border-bottom: 2px solid #dcdcdc;
-        margin-right: 23px; }
-        .wrap .food_list form input::-webkit-input-placeholder {
-          font-size: 10px;
-          font-weight: 400;
-          color: #dcdcdc;
-          padding-left: 24px; }
-        .wrap .food_list form input:-ms-input-placeholder {
-          font-size: 10px;
-          font-weight: 400;
-          color: #dcdcdc;
-          padding-left: 24px; }
-        .wrap .food_list form input::-ms-input-placeholder {
-          font-size: 10px;
-          font-weight: 400;
-          color: #dcdcdc;
-          padding-left: 24px; }
-        .wrap .food_list form input::placeholder {
-          font-size: 10px;
-          font-weight: 400;
-          color: #dcdcdc;
-          padding-left: 24px; }
-    .wrap .food_list button {
-      width: 220px;
-      height: 40px;
-      margin-top: 59px;
-      margin-left: 490px;
-      background-color: #fff;
-      border: 1px solid #67bcdb;
-      border-radius: 15px;
+    margin: 0 auto;
+    margin-top: 60px; }
+    .wrap .doctor_notice h3, .wrap .doctor_notice .sub {
+      float: left; }
+    .wrap .doctor_notice h3 {
       font-size: 18px;
+      font-weight: 900;
+      color: #393939;
+      margin-left: 20px;
+      letter-spacing: 2px; }
+    .wrap .doctor_notice ul li {
+      float: left;
+      font-size: 12px;
+      font-weight: 700;
+      color: #707070;
+      margin-left: 20px;
+      margin-top: 4px; }
+    .wrap .doctor_notice button {
+      width: 120px;
+      height: 34px;
+      border: 2px solid #b4b4b4;
+      background-color: #fff;
+      position: relative;
+      top: -22px;
+      margin-left: 916px;
+      font-size: 14px;
       font-weight: 500;
-      color: #6abddb;
-      cursor: pointer; }
+      color: #5e5e5e;
+      cursor:pointer; }
+    .wrap .doctor_notice .column_box {
+      width: 100%; }
+      .wrap .doctor_notice .column_box .column {
+        width: 285px;
+        margin-left: 20px;
+        float: left; }
+        .wrap .doctor_notice .column_box .column:nth-child(1) {
+          margin-left: 0px; }
+        .wrap .doctor_notice .column_box .column img {
+          width: 100%;
+          cursor:pointer; }
+          .wrap .doctor_notice .column_box .column .column_text li {
+            margin-top: 16px;
+            margin-left: 0px;
+            cursor:pointer; }
+            .wrap .doctor_notice .column_box .column .column_text li:nth-child(1) {
+              font-size: 14px;
+              color: #6f6f6f;
+              margin-left: 10px; }
+            .wrap .doctor_notice .column_box .column .column_text li:nth-child(2) {
+              font-size: 10px;
+              margin-top: 22px;
+              margin-left: 10px;
+              color: #d6d6d6; }
+          .wrap .doctor_notice .column_box .column .column_text span {
+            font-size: 12px;
+            position: relative;
+            top: 6px;
+            margin-left: 16px;
+            color: #a1a1a1;
+            cursor:pointer; }
   .wrap .food_notice {
     width: 1200px;
     margin: 0 auto;

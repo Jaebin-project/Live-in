@@ -1,0 +1,11 @@
+<h1>투병게시판 작성페이지</h1>
+<p>일단 기능구현만 해봤구, 프론트는 나중에... 부탁해!ㅎ</p>
+
+<form method='POST'>
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+    
+    <input class="btn" type="submit" value="제출하기">
+</form>

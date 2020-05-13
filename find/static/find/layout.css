@@ -67,7 +67,7 @@ a {
         width: 100%;
         margin-top: 50px; }
     .wrap header nav {
-      width: 752px;
+      width: 662px;
       margin: 0 auto;
       margin-top: 40px; }
       .wrap header nav .find {
@@ -79,7 +79,7 @@ a {
           margin-top: 10px;
           margin-left: 10px; }
       .wrap header nav ul {
-        width: 600px;
+        width: 510px;
         height: 48px;
         background-color: #fff;
         border: 1px solid #f9f9f9; }
@@ -91,12 +91,12 @@ a {
           .wrap header nav ul li:nth-child(1) {
             width: 110px;
             margin-left: 40px; }
-          .wrap header nav ul li:nth-child(3) {
-            width: 90px; }
-          .wrap header nav ul li:nth-child(4) {
-            width: 70px; }
-          .wrap header nav ul li:nth-child(5) {
+          .wrap header nav ul li:nth-child(2) {
             width: 110px; }
+          .wrap header nav ul li:nth-child(3) {
+            width: 80px; }
+          .wrap header nav ul li:nth-child(4) {
+            width: 100px; }
       .wrap header nav .time {
         width: 100px;
         height: 50px;

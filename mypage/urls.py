@@ -1,7 +1,8 @@
 from django.urls import path
 from . import views
 
-app_name = 'mypage'
 urlpatterns = [
-    path('', views.test, name="test"),
+    path('', views.index, name="mypage"),
+    path('add', views.addTodo, name="add"),
+    path('delete', views.delete, name="delete"),
 ]

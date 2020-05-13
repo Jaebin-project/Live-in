@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -67,7 +68,7 @@ a {
         width: 100%;
         margin-top: 50px; }
     .wrap header nav {
-      width: 752px;
+      width: 662px;
       margin: 0 auto;
       margin-top: 40px; }
       .wrap header nav .find {
@@ -79,7 +80,7 @@ a {
           margin-top: 10px;
           margin-left: 10px; }
       .wrap header nav ul {
-        width: 600px;
+        width: 510px;
         height: 48px;
         background-color: #fff;
         border: 1px solid #f9f9f9; }
@@ -91,12 +92,12 @@ a {
           .wrap header nav ul li:nth-child(1) {
             width: 110px;
             margin-left: 40px; }
-          .wrap header nav ul li:nth-child(3) {
-            width: 90px; }
-          .wrap header nav ul li:nth-child(4) {
-            width: 70px; }
-          .wrap header nav ul li:nth-child(5) {
+          .wrap header nav ul li:nth-child(2) {
             width: 110px; }
+          .wrap header nav ul li:nth-child(3) {
+            width: 80px; }
+          .wrap header nav ul li:nth-child(4) {
+            width: 100px; }
       .wrap header nav .time {
         width: 100px;
         height: 50px;
@@ -165,19 +166,120 @@ a {
       position: absolute;
       top: 100px;
       left: 660px; }
-  .wrap .my_page {
-    width: 100%;
-    height: 180px;
-    background-color: #8dc4d8;
-    margin-top: 512px; }
-    .wrap .my_page .wrap {
-      width: 1200px;
-      margin: 0 auto;
-      position: relative; }
-      .wrap .my_page .wrap img {
-        position: absolute;
-        top: 42px;
-        left: 434px; }
+      .wrap .food_list {
+        width: 100%;
+        height: 480px;
+        margin: 0 auto;
+        margin-top: 520px;
+        background-color: #8dc4d8; }
+        .wrap .food_list .food_list_wrap {
+          width: 1200px;
+          margin: 0 auto;
+          position: relative;
+          top: 72px; }
+          .wrap .food_list .food_list_wrap h3 {
+            margin-top: 99px;
+            margin-left: 436px; }
+          .wrap .food_list .food_list_wrap form {
+            margin-top: 12px;
+            margin-left: 278px;
+            font-size: 14px;
+            font-weight: 400;
+            color: #fff; }
+            .wrap .food_list .food_list_wrap form input {
+              margin-top: 42px;
+              border: none;
+              border-bottom: 2px solid #fff;
+              background-color: transparent;
+              margin-right: 23px; }
+              .wrap .food_list .food_list_wrap form input::-webkit-input-placeholder {
+                font-size: 10px;
+                font-weight: 400;
+                color: #fff;
+                padding-left: 24px; }
+              .wrap .food_list .food_list_wrap form input:-ms-input-placeholder {
+                font-size: 10px;
+                font-weight: 400;
+                color: #fff;
+                padding-left: 24px; }
+              .wrap .food_list .food_list_wrap form input::-ms-input-placeholder {
+                font-size: 10px;
+                font-weight: 400;
+                color: #fff;
+                padding-left: 24px; }
+              .wrap .food_list .food_list_wrap form input::placeholder {
+                font-size: 10px;
+                font-weight: 400;
+                color: #fff;
+                padding-left: 24px; }
+          .wrap .food_list .food_list_wrap button {
+            width: 220px;
+            height: 40px;
+            margin-top: 59px;
+            margin-left: 490px;
+            background-color: transparent;
+            border: 1px solid #fff;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: 1px;
+            cursor: pointer; }
+            .modal_back{
+              width:100%;
+              height:100%;
+              position:fixed;
+              top:0px;
+              background-color:rgba(0,0,0,0.2);
+              display:none;
+            }
+            .modal {
+              width: 800px;
+              height: 666px;
+              margin: 0 auto;
+              background-color: #fff;
+              border-radius: 7px;
+              font-family: "'Nanum Gothic', sans-serif";
+              font-size:12px;
+              color:#5b5b5b;
+              font-weight:normal;
+              z-index: 1;
+              display:none;
+              position:fixed;
+              top:50%;
+              margin-top:-333px;
+              left:50%;
+              margin-left:-400px; }
+              .modal .modal_title {
+                display: block;
+                text-align: center;
+                padding: 30px;
+                font-size: 22px;
+                border-bottom: 1px solid #ddd; }
+              .modal .modal_body {
+                height: 460px;
+                padding: 30px;
+                line-height: 22px;
+                overflow-y: scroll;
+                color:#656565; }
+                .modal .modal_body h4:nth-child(2) {
+                  margin-top: 20px; }
+                .modal .modal_body table {
+                  text-align: center;}
+                  .modal .modal_body table td {
+                    border: 1px solid #ddd;}
+                  .modal .modal_body table li {
+                    line-height: 16px; }
+              .modal button {
+                width: 100px;
+                height: 30px;
+                position: relative;
+                left: 50%;
+                margin-top: 18px;
+                margin-left: -50px;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer; }
   .wrap .diary {
     width: 1200px;
     margin: 0 auto;

@@ -20,13 +20,12 @@
                 </div>
                 <ul class="clearfix">
                     <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
-                    <li><h2><a href="#">재빈 이해하기</a></h2></li>
-                    <li><h2><a href="{% url 'food' %}">영양과 운동</a></h2></li>
+                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
                     <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
-                    <li><h2><a href="#">마이페이지</a></h2></li>
+                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
                 </ul>
                 <div class="time">
-                    <h2><a href="#">진료시간</a></h2>
+                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
                 </div>
             </nav>
         </header>
@@ -53,11 +52,22 @@
                         <td>제목</td>
                         <td>작성자</td>
                         <td>작성일</td>
-                        <td>조회수</td>
+                        <!-- <td>조회수</td> -->
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- DB에 있는 게시글 불러오기 -->
+                    {% for post in posts.all %}
                     <tr>
+                        <td>{{ post.id }}</td>
+                        <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
+                        <!-- 작성자는 로그인기능 구현이후에.. -->
+                        <td>작성자</td>
+                        <!-- <td>{{ post.User_id.name }}</td> -->
+                        <td>{{ post.pub_date }}</td>
+                    </tr>
+                    {% endfor %}
+                    <!-- <tr>
                         <td>9</td>
                         <td>면역 치료 후 첫 외래</td>
                         <td>갸르미</td>
@@ -119,11 +129,11 @@
                         <td>유니혀니맘</td>
                         <td>20.03.17</td>
                         <td>330</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
-            <button><a href="#">보기</a></button>
-            <button><a href="#">목록</a></button>
+            <button><a href="{% url 'new' %}">글쓰기</a></button>
+            <!-- <button><a href="#">목록</a></button> -->
         </div>
         <footer>
             <a href="{% url 'main' %}"><img src="../../static/health_diary/img/footer_logo.png" alt=""/></a>

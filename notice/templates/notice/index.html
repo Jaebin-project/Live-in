@@ -98,11 +98,22 @@
                         <td>제목</td>
                         <td>작성자</td>
                         <td>작성일</td>
-                        <td>조회수</td>
+                        <!-- <td>조회수</td> -->
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- DB에 있는 게시글 불러오기 -->
+                    {% for board in boards.all %}
                     <tr>
+                        <td>{{ board.id }}</td>
+                        <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
+                        <!-- 작성자는 로그인기능 구현이후에.. -->
+                        <td>작성자</td>
+                        <!-- <td>{{ board.User_id.name }}</td> -->
+                        <td>{{ board.pub_date }}</td>
+                    </tr>
+                    {% endfor %}
+                    <!-- <tr>
                         <td>9</td>
                         <td>면역 치료 후 첫 외래</td>
                         <td>갸르미</td>
@@ -164,10 +175,10 @@
                         <td>유니혀니맘</td>
                         <td>20.03.17</td>
                         <td>330</td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
-            <button><a href="#">글쓰기</a></button>
+            <button><a href="{% url 'new' %}">글쓰기</a></button>
         </div>
         <footer>
             <a href="{% url 'main' %}"><img src="../../static/notice/img/footer_logo.png" alt=""/></a>

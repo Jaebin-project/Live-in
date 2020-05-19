@@ -60,7 +60,7 @@
                     {% for post in posts.all %}
                     <tr>
                         <td>{{ post.id }}</td>
-                        <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
+                        <td><a href="{% url 'detail_hd' post.id %}">{{ post.title }}</a></td>
                         <!-- 작성자는 로그인기능 구현이후에.. -->
                         <td>작성자</td>
                         <!-- <td>{{ post.User_id.name }}</td> -->
@@ -132,7 +132,7 @@
                     </tr> -->
                 </tbody>
             </table>
-            <button><a href="{% url 'new' %}">글쓰기</a></button>
+            <button><a href="{% url 'new_hd' %}">글쓰기</a></button>
             <!-- <button><a href="#">목록</a></button> -->
         </div>
         <footer>

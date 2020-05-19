@@ -2,6 +2,6 @@
 <p>{{ post.pub_date }}</p>
 <p>{{ post.content }}</p>
 <br><br>
-<button><a href="{% url 'edit' pk=post.pk %}">수정</a></button>
-<button><a href="{% url 'remove' pk=post.pk %}">삭제</a></button>
+<button><a href="{% url 'edit_hd' pk=post.pk %}">수정</a></button>
+<button><a href="{% url 'remove_hd' pk=post.pk %}">삭제</a></button>
 <button><a href="{% url 'health_diary' %}">목록으로</a></button>

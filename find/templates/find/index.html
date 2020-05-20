@@ -2,27 +2,37 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'find/layout.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'find/layout.css' %}" type="text/css" />
     <title>Find Sub Page</title>
 </head>
+
 <body>
     <div class="wrap">
         <header>
             <div class="logo">
-                <h1><a href="{% url 'main' %}"><img src="../../static/find/img/logo.png" alt=""/></a></h1>
+                <h1><a href="{% url 'main' %}"><img src="../../static/find/img/logo.png" alt="" /></a></h1>
             </div>
             <nav class="clearfix">
                 <div class="find">
-                    <img src="../../static/find/img/find.png" alt=""/>
+                    <img src="../../static/find/img/find.png" alt="" />
                 </div>
                 <ul class="clearfix">
-                    <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
-                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
-                    <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
-                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
+                    <li>
+                        <h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2>
+                    </li>
+                    <li>
+                        <h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2>
+                    </li>
+                    <li>
+                        <h2><a href="{% url 'health_diary' %}">투병 일기</a></h2>
+                    </li>
+                    <li>
+                        <h2><a href="{% url 'mypage' %}">마이페이지</a></h2>
+                    </li>
                 </ul>
                 <div class="time">
                     <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
@@ -32,77 +42,78 @@
         <div class="search">
             <div class="black"></div>
             <div class="search_wrap">
-                <h3><img src="../../static/find/img/search_title.png" alt=""/></h3>
+                <h3><img src="../../static/find/img/search_title.png" alt="" /></h3>
                 <form>
-                    <input type="text" name="name" value="병원 이름을 입력해주세요."/>
+                    <input type="text" name="name" value="병원 이름을 입력해주세요." />
                 </form>
                 <button>
-                    <img src="../../static/find/img/search_icon.png" alt=""/>
+                    <img src="../../static/find/img/search_icon.png" alt="" />
                     <label>search</label>
                 </button>
-                <img src="../../static/find/img/city_title.png" alt=""/>
+                <img src="../../static/find/img/city_title.png" alt="" />
                 <div class="city_choice clearfix">
                     <div class="city_box">
-                        <img src="" alt=""/>
+                        <img src="" alt="" />
                         <span>서울</span>
                     </div>
                     <div class="city_box">
-                        <img src="" alt=""/>
+                        <img src="" alt="" />
                         <span>경인</span>
                     </div>
                     <div class="city_box">
-                        <img src="" alt=""/>
+                        <img src="" alt="" />
                         <span>강원</span>
                     </div>
                     <div class="city_box">
-                        <img src="" alt=""/>
+                        <img src="" alt="" />
                         <span>충청</span>
                     </div>
                     <div class="city_box">
-                        <img src="" alt=""/>
+                        <img src="" alt="" />
                         <span>전라</span>
                     </div>
                     <div class="city_box">
-                        <img src="" alt=""/>
+                        <img src="" alt="" />
                         <span>경상</span>
                     </div>
                     <div class="city_box">
-                        <img src="" alt=""/>
+                        <img src="" alt="" />
                         <span>제주</span>
                     </div>
                 </div>
             </div>
         </div>
         <div class="hospital_contents">
-            <h3><img src="../../static/find/img/search_result_title.png" alt=""/></h3>
+            <h3><img src="../../static/find/img/search_result_title.png" alt="" /></h3>
             <div class="hospital_info clearfix">
                 <div class="hospital_box">
-                    <img src="../../static/find/img/hospital1.png" alt=""/>
+                    <img src="../../static/find/img/hospital1.png" alt="" />
                     <div class="hospital_text">
                         <span>서울 성모 혈액 병원</span>
                         <p>서울 서초구 반포대로 222지번 반포동 505 가톨릭중앙의료원 새병원 및 성의회관</p>
                     </div>
                 </div>
                 <div class="hospital_box">
-                    <img src="../../static/find/img/hospital2.png" alt=""/>
+                    <img src="../../static/find/img/hospital2.png" alt="" />
                     <div class="hospital_text">
                         <span>삼성 서울 병원</span>
                         <p>서울특별시 강남구 일원로 81 (06351) 삼성서울병원</p>
                     </div>
                 </div>
                 <div class="hospital_box">
-                    <img src="../../static/find/img/hospital3.png" alt=""/>
+                    <img src="../../static/find/img/hospital3.png" alt="" />
                     <div class="hospital_text">
-                        <span>분당 제생 병원</span>
+                        <span>분당 재생 병원</span>
                         <p>13590 경기도 성남시 분당구 서현로 180번길 20(서현동 255-2)</p>
                     </div>
                 </div>
             </div>
         </div>
         <footer>
-            <a href="{% url 'main' %}"><img src="../../static/find/img/footer_logo.png" alt=""/></a>
-            <img src="../../static/find/img/footer_text.png" alt=""/>
+            <a href="{% url 'main' %}"><img src="../../static/find/img/footer_logo.png" alt="" /></a>
+            <img src="../../static/find/img/footer_text.png" alt="" />
         </footer>
     </div>
 </body>
+
 </html>

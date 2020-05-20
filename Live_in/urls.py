@@ -17,10 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('main.urls')),
-    path('mypage/', include('mypage.urls')),
-    path('health_diary/', include('health_diary.urls')),
-    path('find/', include('find.urls')),
-    path('notice/', include('notice.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("main.urls")),
+    path("mypage/", include("mypage.urls")),
+    path("health_diary/", include("health_diary.urls")),
+    path("find/", include("find.urls")),
+    path("User/", include("User.urls")),
 ]

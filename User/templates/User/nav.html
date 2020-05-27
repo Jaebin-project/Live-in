@@ -1,0 +1,9 @@
+<a href="{% url "main" %}"> </a>
+<ul>
+    {% if user.is_authenticated %}
+    <button><li><a href="{% url "User:logout" %}">Logout</a></li></button>
+    {% else %}
+    <button><li> <a href="{% url "User:login" %}">Login</a></li></button>
+    <button> <a href="{% url "User:signup" %}">Signup</a></li></button><li>
+    {% endif %}
+</ul>

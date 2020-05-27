@@ -1,48 +1,54 @@
+from django.views import View
 from django.views.generic import FormView
-from django.urls import reverse_lazy
-from django.shortcuts import redirect, reverse
+from django.http import HttpResponse
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import authenticate, login, logout
 from . import forms
 
 
-# Create your views here.
 class LoginView(FormView):
     template_name = "User/login.html"
     form_class = forms.LoginForm
-    success_url = reverse_lazy("core:home")
+    success_url = "/"
 
     def form_valid(self, form):
-        email = form.cleaned_data.get("email")
+        username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
-        user = authenticate(self.request, username=email, password=password)
+        user = authenticate(self.request, username=username, password=password)
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
 
-    def get_success_url(self):
-        next_arg = self.request.GET.get("next")
-        if next_arg is not None:
-            return next_arg
-        else:
-            return reverse("core:home")
+    """def post(self, request):
+        form = forms.LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect("/")
+            else:
+                return HttpResponse("Login Fail")
+        return render(request, "User/login.html", {"form": form})
+        """
 
 
 def log_out(request):
     logout(request)
-    return redirect(reverse("core:home"))
+    return redirect("/")
 
 
 class SignUpView(FormView):
     template_name = "User/signup.html"
     form_class = forms.SignUpForm
-    success_url = reverse_lazy("core:home")
+    success_url = "/"
 
     def form_valid(self, form):
         form.save()
-        email = form.cleaned_data.get("email")
+        username = form.cleaned_data.get("username")
         password = form.cleaned_data.get("password")
-        user = authenticate(self.request, username=email, password=password)
+        user = authenticate(self.request, username=username, password=password)
         if user is not None:
             login(self.request, user)
-        user.verify_email()
         return super().form_valid(form)

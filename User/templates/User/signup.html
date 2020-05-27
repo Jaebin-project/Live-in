@@ -1,0 +1,15 @@
+{% extends "main/test.html" %}
+
+{% block page_title %}
+<h1>Sign up</h1>
+<br>
+{% endblock page_title %} {% block content %}
+<br>
+<form method="POST" action="{% url "User:signup" %}">
+  {% csrf_token %}
+  {{form.as_p}}
+  <button>Sign up</button>
+  <!--<input type="submit" value="signup"/> -->
+</form>
+{% endblock content %}
+

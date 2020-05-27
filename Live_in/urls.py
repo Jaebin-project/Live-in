@@ -23,4 +23,5 @@ urlpatterns = [
     path("health_diary/", include("health_diary.urls")),
     path("find/", include("find.urls")),
     path("User/", include("User.urls")),
+    path("notice/", include("notice.urls")),
 ]

@@ -2,6 +2,19 @@
 <p>{{ post.pub_date }}</p>
 <p>{{ post.content }}</p>
 <br><br>
-<button><a href="{% url 'edit_hd' pk=post.pk %}">수정</a></button>
-<button><a href="{% url 'remove_hd' pk=post.pk %}">삭제</a></button>
+<button><a href="{% url 'edit_hd' post.pk %}">수정</a></button>
+<button><a href="{% url 'remove_hd' post.pk %}">삭제</a></button>
 <button><a href="{% url 'health_diary' %}">목록으로</a></button>
+
+<!-- 댓글작성 -->
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input class='btn' type='submit' value="댓글쓰기">
+</form>
+
+<!-- 댓글목록 -->
+{% for comment in post.comments.all %}
+    {{ comment.content }}
+    <button><a href="{% url 'remove_comment_hd' comment.pk %}">삭제</a></button>
+{% endfor %}

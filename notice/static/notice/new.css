@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,500,700,900&display=swap");
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  font-family: 'Noto Sans KR', sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  color: #4b4b4b;
+  font-weight: 600; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  font: inherit; }
+
+button {
+  color: inherit;
+  font: inherit; }
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both; }
+
+.find, ul, .time {
+  float: left; }
+
+.wrap {
+  width: 100%; }
+  .wrap header {
+    width: 1200px;
+    margin: 0 auto; }
+    .wrap header .logo {
+      width: 197px;
+      margin: 0 auto; }
+      .wrap header .logo img {
+        width: 100%;
+        margin-top: 50px; }
+    .wrap header nav {
+      width: 662px;
+      margin: 0 auto;
+      margin-top: 40px; }
+      .wrap header nav .find {
+        width: 50px;
+        height: 50px;
+        background-color: #2cacdb;
+        cursor: pointer; }
+        .wrap header nav .find img {
+          margin-top: 10px;
+          margin-left: 10px; }
+      .wrap header nav ul {
+        width: 510px;
+        height: 48px;
+        background-color: #fff;
+        border: 1px solid #f9f9f9; }
+        .wrap header nav ul li {
+          width: 100px;
+          margin-left: 20px;
+          margin-top: 15px;
+          float: left; }
+          .wrap header nav ul li:nth-child(1) {
+            width: 110px;
+            margin-left: 40px; }
+          .wrap header nav ul li:nth-child(2) {
+            width: 110px; }
+          .wrap header nav ul li:nth-child(3) {
+            width: 80px; }
+          .wrap header nav ul li:nth-child(4) {
+            width: 100px; }
+      .wrap header nav .time {
+        width: 100px;
+        height: 50px;
+        background-color: #2cacdb; }
+        .wrap header nav .time h2 {
+          margin-left: 22px;
+          margin-top: 16px;
+          color: #fff; }
+  .wrap .main {
+    width: 100%;
+    height: 330px;
+    background-image: url("../../static/notice/img/main_img.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: -18px; }
+    .wrap .main .black {
+      width: 1406px;
+      height: 330px;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.2); }
+    .wrap .main .main_wrap {
+      width: 1200px;
+      margin: 0 auto;
+      margin-top: -330px; }
+      .wrap .main .main_wrap h3 {
+        margin-top: 118px;
+        margin-left: 420px; }
+    
+    .wrap .notice{
+        width:1000px;
+        margin:0 auto;
+    }
+    .wrap .notice h3{
+        font-size:18px;
+        font-weight:700;
+        color:#2cacdb;
+        border-bottom: 2px solid #2cacdb;
+        padding:6px;
+        margin-top:20px;
+    }
+    .wrap .notice select{
+        width:280px;
+        height:30px;
+        margin-top:10px;
+        border: 1px solid rgb(207, 210, 213);
+    }
+    .wrap .notice form{
+        margin-top:12px;
+    }
+    .wrap .notice .notice-title{
+        width:1000px;
+        height:35px;
+        border: 1px solid rgb(207, 210, 213);
+    }
+    .wrap .notice .notice-content{
+        width:1000px;
+        margin-top:6px;
+        height:350px;
+        border: 1px solid rgb(207, 210, 213);
+    }
+    .wrap .notice .btn{
+        width:120px;
+        height:35px;
+        background-color:#2cacdb;
+        border:none;
+        color:#fff;
+        font-size:14px;
+        font-weight:700;
+        cursor:pointer;
+        margin-left:886px;
+        margin-top:10px;
+
+    }
+        .wrap footer {
+            width: 1200px;
+            margin: 0 auto;
+            margin-top: 82px;
+            margin-bottom: 40px; }
+            .wrap footer img:nth-child(1) {
+              margin-left: 66px; }
+            .wrap footer img:nth-child(2) {
+              margin-top: -18px;
+              margin-left: 60px; }

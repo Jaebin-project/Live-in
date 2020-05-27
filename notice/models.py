@@ -12,7 +12,7 @@ class Board(models.Model):
         return self.title
 
 class Comment(models.Model):
-    Board_id = models.ForeignKey('Board', on_delete=models.CASCADE)
+    Board_id = models.ForeignKey('Board', on_delete=models.CASCADE, related_name='comments')
     content = models.CharField(max_length=200)
     # User_id = models.ForeignKey('User')
     pub_date = models.DateTimeField(auto_now_add=True)

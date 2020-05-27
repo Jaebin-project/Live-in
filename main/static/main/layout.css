@@ -62,7 +62,7 @@ a {
     width: 1200px;
     margin: 0 auto; }
     .wrap header .logo {
-      width: 197px;
+      width: 230px;
       margin: 0 auto; }
       .wrap header .logo img {
         width: 100%;
@@ -70,7 +70,7 @@ a {
     .wrap header nav {
       width: 662px;
       margin: 0 auto;
-      margin-top: 40px; }
+      margin-top: 20px; }
       .wrap header nav .find {
         width: 50px;
         height: 50px;
@@ -182,7 +182,7 @@ a {
             margin-left: 436px; }
           .wrap .food_list .food_list_wrap form {
             margin-top: 12px;
-            margin-left: 278px;
+            margin-left: 378px;
             font-size: 14px;
             font-weight: 400;
             color: #fff; }

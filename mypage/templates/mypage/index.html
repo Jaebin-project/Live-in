@@ -5,8 +5,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'mypage/layout.css' %}" type="text/css"/>
-    <title>My Page</title>
+	<link rel="stylesheet" href="{% static 'mypage/layout.css' %}" type="text/css"/>
+	<link rel="stylesheet" href="{% static 'mypage/main.css' %}" type="text/css"/>
+	<link rel="stylesheet" href="{% static 'mypage/day_main.css' %}" type="text/css"/>
+	<script src="{% static 'mypage/js/main.js' %}" type="text/javascript" text="javascript"></script>
+	<script src="{% static 'mypage/js/day_main.js' %}" type="text/javascript" text="javascript"></script>
+	<script src="{% static 'mypage/js/interaction_main.js' %}" type="text/javascript" text="javascript"></script>
+	<script src="{% static 'mypage/js/jquery-3.5.0.js' %}" type="text/javascript" text="javascript"></script>
+	<script src="{% static 'mypage/js/diary.js' %}" type="text/javascript" text="javascript"></script>
+	<title>My Page</title>
+	<script>
+		
+
+		document.addEventListener('DOMContentLoaded', function() {
+		  var calendarEl = document.getElementById('calendar');
+			let today = new Date();
+			let year = today.getFullYear();
+			let month = today.getMonth()+1;
+			if(month<10){
+				month = '0'+month;
+			}
+			let date = today.getDate();
+		  
+		  var calendar = new FullCalendar.Calendar(calendarEl, {
+			plugins: [ 'interaction', 'dayGrid' ],
+			defaultDate: `${year}-${month}-${date}`,
+			editable: true,
+			eventLimit: true, // allow "more" link when too many events
+			events: [
+			{
+				  title : '새로운 일정 추가',
+				  start : '2020-05-21',
+					end : '2020-05-22',
+			  },
+			  {
+				  title : '프젝',
+				  start : '2020-05-16',
+				  end : '2020-05-23',
+			  },
+			  {
+				  title : '일정추가2',
+				  start : '2020-05-19',
+				  end : '2020-05-30',
+			  },
+			  {
+				  title : '일정추가3',
+				  start : '2020-05-19',
+				  end : '2020-05-30',
+			  },
+			]
+		  });
+	  
+		  calendar.render();
+		});
+	  
+	  </script>
+	  <style>
+		.calendar{
+			width:1200px;
+			margin:0 auto;
+			position:relative;
+		}
+		.calendar_title{
+			width:173px;
+			margin:0 auto;
+			margin-top:90px;
+		}
+		.calendar_title img{
+			width:100%;
+		}
+		#calendar{
+			margin-top:76px;
+			max-width: 800px;
+		}
+		.gray_back{
+			width:800px;
+			height:600px;
+			background-color:#f6f6f6;
+			position:absolute;
+			top:188px;
+			left:125px;
+		}
+		.white_back{
+			width:800px;
+			height:600px;
+			background-color:#fff;
+			position:absolute;
+			top:158px;
+			left:0px;
+		}
+		.calendar_add{
+			width:320px;
+			height:400px;
+			background-color:#fff;
+			border:2px solid #3788d8;
+			border-radius:15px;
+			position:absolute;
+			top:384px;
+			left:879px;
+		}
+		.add_title{
+			margin-top:46px;
+			margin-left:38px;
+		}
+		.calendar_add label, .calendar_add input{
+			display:block;
+			margin-top:12px;
+			margin-left:42px;
+		}
+		.calendar_add label{
+			font-size:15px;
+		}
+		.calendar_add label:nth-child(2){
+			margin-top:16px;
+		}
+		.calendar_add input{
+			width:230px;
+		}
+		.calendar_add button{
+			width:140px;
+			height:35px;
+			background-color:#3788d8;
+			color:#fff;
+			border:none;
+			margin-top:24px;
+			margin-left:138px;
+			font-size:14px;
+			cursor:pointer;
+		}
+		.numeric_diary{
+			width:1200px;
+			margin:0 auto;
+			margin-top:82px;
+			position:relative;
+		}
+		.numeric_diary .diary_title{
+			margin-left:46px;
+		}
+		.numeric_diary .diary_table{
+			margin-top:34px;
+			margin-left:40px;
+			text-align:center;
+		}
+		.numeric_diary .diary_table thead td{
+			width:110px;
+			background-color:#efa9a9;
+			font-size:16px;
+			font-weight:500;
+			color:#fff;
+			padding:14px;
+		}
+		.numeric_diary .diary_table tbody td{
+			width:110px;
+			font-size:15px;
+			font-weight:400;
+			color:#696969;
+			padding:14px;
+		}
+		.comment_page{
+			width:280px;
+			position:absolute;
+			top:-4px;
+			left:922px;
+		}
+		.comment_page span{
+			font-size:32px;
+			font-weight:700;
+			color:#0d0d0d;
+		}
+		.comment_page p{
+			font-size:16px;
+			font-weight:400;
+			color:#bcbcbc;
+			margin-left:58px;
+			margin-top:-12px;
+		}
+		.comment_page img{
+			width:180px;
+			margin-top:24px;
+			margin-left:52px;
+		}
+		.comment_page button{
+			width:140px;
+			height:40px;
+			background-color:#efa9a9;
+			border:none;
+			color:#fff;
+			font-size:18px;
+			font-weight:400;
+			margin-top:60px;
+			margin-left:188px;
+			cursor:pointer;
+		}
+		.modal_back{
+              width:100%;
+              height:100%;
+              position:fixed;
+              top:0px;
+			  background-color:rgba(0,0,0,0.2);
+			  display:none;
+            }
+		.modal {
+              width: 800px;
+              height: 666px;
+              margin: 0 auto;
+              background-color: #fff;
+              border-radius: 7px;
+              font-family: "'Nanum Gothic', sans-serif";
+              font-size:12px;
+              color:#5b5b5b;
+              font-weight:normal;
+              z-index: 1;
+              position:fixed;
+              top:50%;
+              margin-top:-333px;
+              left:50%;
+			  margin-left:-400px;
+				display:none; }
+			  .modal form{
+				  margin-left:14px;
+			  }
+              .modal .modal_title {
+                text-align: center;
+                padding: 30px;
+                font-size: 22px;
+                border-bottom: 1px solid #ddd; }
+              .modal .modal_body {
+                height: 460px;
+                padding: 30px;
+                line-height: 22px;
+				color:#656565; }
+				.modal_body h4{
+					font-size:14px;
+					margin-top:10px;
+				}
+				.modal_body textarea{
+					width:694px;
+					height:100px;
+				}
+				.diary-date{
+					display:block;
+				}
+				.diary-blood{
+					width:150px;
+				}
+				.modal_body textarea,.modal_body input{
+					margin-top:4px;
+				}
+              .modal button {
+                width: 100px;
+                height: 30px;
+                position: relative;
+                left: 50%;
+                margin-top: 14px;
+				margin-left: 122px;
+                border: none;
+				cursor: pointer; }
+				#close{
+					margin-left:4px;
+				}
+		.wrap footer{
+			margin-top:420px;
+		}
+	  </style>
 </head>
 <body>
     <div class="wrap">
@@ -38,78 +299,85 @@
         <div class="calendar">
             <div class="calendar_title">
                 <img src="../../static/mypage/img/date_picker.png" alt=""/>
-            </div>
-			<div class="col leftCol">
-				<div class="content">
-					<h1 class="date">Friday<span>September 12th</span></h1>
-					<div class="notes">
-						<form action="{% url 'add' %}" method="POST" role="form">
-							{% csrf_token %}
-							<p>
-								{{ form.text }}
-								<a href="#" title="Add note" class="addNote animate"><button type="submit">+</button></a>
-							</p>
-							<ul class="noteList">
-								{% for calendar in op_list %}
-									<li>{{ calendar.content }}<a href="{% url 'delete' %}" title="Remove note" class="removeNote animate">x</a></li>
-								{% endfor %}
-							</ul>
-						</form>
-					</div>
-				</div>
 			</div>
-
-			<div class="col rightCol">
-				<div class="content">
-					<h2 class="year">2020</h2>
-					<ul class="months">
-						<li><a href="#" title="Jan" data-value="1">Jan</a></li>
-						<li><a href="#" title="Feb" data-value="2">Feb</a></li>
-						<li><a href="#" title="Mar" data-value="3">Mar</a></li>
-						<li><a href="#" title="Apr" data-value="4">Apr</a></li>
-						<li><a href="#" title="May" data-value="5">May</a></li>
-						<li><a href="#" title="Jun" data-value="6" class="selected">Jun</a></li>
-						<li><a href="#" title="Jul" data-value="7">Jul</a></li>
-						<li><a href="#" title="Aug" data-value="8">Aug</a></li>
-						<li><a href="#" title="Sep" data-value="9">Sep</a></li>
-						<li><a href="#" title="Oct" data-value="10">Oct</a></li>
-						<li><a href="#" title="Nov" data-value="11">Nov</a></li>
-						<li><a href="#" title="Dec" data-value="12">Dec</a></li>
-					</ul>
-					<div class="clearfix"></div>
-					<ul class="weekday">
-						<li><a href="#" title="Mon" data-value="1">Mon</a></li>
-						<li><a href="#" title="Tue" data-value="2">Tue</a></li>
-						<li><a href="#" title="Wed" data-value="3">Wed</a></li>
-						<li><a href="#" title="Thu" data-value="4">Thu</a></li>
-						<li><a href="#" title="Fri" data-value="5">Fri</a></li>
-						<li><a href="#" title="Say" data-value="6">Sat</a></li>
-						<li><a href="#" title="Sun" data-value="7">Sun</a></li>
-					</ul>
-					<div class="clearfix"></div>
-					<ul class="days">
-						<script>
-							for( var _i = 1; _i <= 31; _i += 1 ){
-								var _addClass = '';
-								if( _i === 12 ){ _addClass = ' class="selected"'; }
-								
-								switch( _i ){
-									case 8:
-									case 10:
-									case 27:
-										_addClass = ' class="event"';
-									break;
-								}
-
-								document.write( '<li><a href="#" title="'+_i+'" data-value="'+_i+'"'+_addClass+'>'+_i+'</a></li>' );
-							}
-						</script>
-					</ul>
-					<div class="clearfix"></div>
+			<div id='calendar'></div>
+			<div class="gray_back"></div>
+			<div class="white_back"></div>
+			<div class="calendar_add">
+				<div class="add_title">
+					<img src="../../static/mypage/img/add_plan_title.png" alt=""/>
 				</div>
+				<label>시작일</label>
+				<input type="date" value="2020-05-19"/>
+				<label>종료일</label>
+				<input type="date" value="2020-05-19"/>
+				<label>병원 일정</label>
+				<input type="text" placeholder="진료 및 치료내용을 등록하세요."/>
+				<button type="submit">일정등록</button>
 			</div>
-
-			<div class="clearfix"></div>
+		</div>
+		<div class="numeric_diary">
+			<div class="diary_title">
+				<img src="../../static/mypage/img/diary_title.png" alt=""/>	
+			</div>
+			<div class="diary_table">
+				<table>
+					<thead>
+						<tr>
+							<td>날짜</td>
+							<td>백혈구</td>
+							<td>중성구</td>
+							<td>헤모글로빈</td>
+							<td>혈소판</td>
+							<td>이모티콘</td>
+						</tr>
+					</thead>
+					<tbody>
+						<!--
+						<tr>
+							<td>9/21</td>
+							<td>1000</td>
+							<td>-</td>
+							<td>10.6</td>
+							<td>25,000</td>
+							<td>좋아요</td>
+						</tr>
+						-->
+						{% for diary in op_list %}
+						<tr>
+							<td>{{ diary.date }}</td>
+							<td>{{ diary.WBC }}</td>
+							<td>{{ diary.neutrophil }}</td>
+							<td>{{ diary.RBC }}</td>
+							<td>{{ diary.PT }}</td>
+							<td></td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="comment_page">
+				<span>19</span>
+				{% for diary in op_list %}
+				<p>{{ diary.content }}</p>
+				{% endfor %}
+				<img src="../../static/mypage/img/happy.png" alt=""/>
+				<button type="submit">글쓰기</button>
+			</div>
+		</div>
+		<div class="modal_back"></div>
+        <div class="modal">
+			<div class="modal_title">
+				<h3>혈액 수치 입력</h3>
+			</div>
+			<form action="{% url 'add' %}" method="POST">
+				{% csrf_token %}
+				<div class="modal_body">
+					{{ form.as_table }}
+				</div>
+				<button type="submit">등록</button>
+				<button id="close">닫기</button>
+			</form>
         </div>
         <footer>
             <a href="#"><img src="../../static/mypage/img/footer_logo.png" alt=""/></a>

@@ -41,18 +41,27 @@
                 <li>전문 의사 작성</li>
                 <li>칼럼 모음</li>
             </ul>
-            <button>글쓰기</button>
+            <button><a href="{% url 'new_pro' %}">글쓰기</a></button>
             <div class="column_box clearfix">
+                {% for board in boards.all %}
+                {% if board.pro == True %}
                 <div class="column">
-                    <img src="../../static/notice/img/column1.jpg" alt=""/>
+                    <a href="{% url 'detail' board.id %}"><img src="../../static/notice/img/column1.jpg" alt=""/></a>
                     <div class="column_text">
                         <ul>
-                            <li>재생불량성빈혈, 생존율 높인다!</li>
+                            <li>{{ board.title }}</li>
+                            <!-- 전문가이름 -->
                             <li>재빈닥터</li>
+                            <!-- <li>{{ board.User_id.name }}</li> -->
                         </ul>
-                        <span>11.05.05</span>
+                        <!-- 생성날짜 -->
+                        <br><br>
+                        <span>{{ board.pub_date }}</span>
                     </div>
                 </div>
+                {% endif %}
+                {% endfor %}
+
                 <div class="column">
                     <img src="../../static/notice/img/column2.png" alt=""/>
                     <div class="column_text">
@@ -104,6 +113,7 @@
                 <tbody>
                     <!-- DB에 있는 게시글 불러오기 -->
                     {% for board in boards.all %}
+                    {% if board.pro == False %}
                     <tr>
                         <td>{{ board.id }}</td>
                         <td><a href="{% url 'detail' board.id %}">{{ board.title }}</a></td>
@@ -112,8 +122,9 @@
                         <!-- <td>{{ board.User_id.name }}</td> -->
                         <td>{{ board.pub_date }}</td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
-                    <!-- <tr>
+                    <tr>
                         <td>9</td>
                         <td>면역 치료 후 첫 외래</td>
                         <td>갸르미</td>
@@ -175,7 +186,7 @@
                         <td>유니혀니맘</td>
                         <td>20.03.17</td>
                         <td>330</td>
-                    </tr> -->
+                    </tr>
                 </tbody>
             </table>
             <button><a href="{% url 'new' %}">글쓰기</a></button>

@@ -11,7 +11,7 @@ class Post(models.Model):
         return self.title
 
 class Comment(models.Model):
-    Post_id = models.ForeignKey('Post', on_delete=models.CASCADE)
+    Post_id = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
     content = models.CharField(max_length=200)
     # User_id = models.ForeignKey('User')
     pub_date = models.DateTimeField(auto_now_add=True)

@@ -1,27 +1,21 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
 
-from .models import Calendar
-from .forms import TodoForm
+from .models import Diary
+from .forms import DiaryForm
 
 def index(request):
-    op_list = Calendar.objects.order_by('id')
-    form = TodoForm()
-    context = {'op_list' : op_list, 'form' : form,}
+    op_list = Diary.objects.order_by('id')
+    form = DiaryForm()
+    context = {'op_list':op_list, 'form':form,}
     return render(request, 'mypage/index.html', context)
 
 @require_POST
-def addTodo(request):
-    form = TodoForm(request.POST)
-
+def addResult(request):
+    form = DiaryForm(request.POST)
+    
     if form.is_valid():
-        new_todo = Calendar(content=request.POST['text'])
-        new_todo.save()
-
+        post = Diary(date = request.POST['date'],WBC = request.POST['wbc'],neutrophil = request.POST['neutrophil'],RBC = request.POST['rbc'],PT = request.POST['pt'],content = request.POST['comment'])
+        post.save()
+    
     return redirect('mypage')
-
-def delete(request):
-    Calendar.objects.all().delete()
-
-    return redirect('mypage')
-

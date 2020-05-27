@@ -24,16 +24,16 @@ class LoginForm(forms.Form):
             )
 
 
-class SignUpForm(forms.Form):
+class SignUpForm(forms.ModelForm):
+    class Meta:
+        model = models.User
+        fields = ("name", "email", "pro", "birth")
 
     username = forms.CharField()
-    email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
     password1 = forms.CharField(widget=forms.PasswordInput, label="Confrim Password")
-    name = forms.CharField(max_length=20)
-    pro = forms.BooleanField()
 
-    def clean_username(self):
+    """def clean_username(self):
         username = self.cleaned_data.get("username")
         try:
             models.User.objects.get(username=username)
@@ -42,6 +42,7 @@ class SignUpForm(forms.Form):
             )
         except models.User.DoesNotExist:
             return username
+    """
 
     def clean_password1(self):
         password = self.cleaned_data.get("password")
@@ -51,8 +52,9 @@ class SignUpForm(forms.Form):
         else:
             return password
 
-    def save(self):
-        username = self.cleaned_data.get("username")
+    """def save(self):
+
+       username = self.cleaned_data.get("username")
         email = self.cleaned_data.get("email")
         password = self.cleaned_data.get("password")
         name = self.cleaned_data.get("name")
@@ -61,4 +63,12 @@ class SignUpForm(forms.Form):
         user = models.User.objects.create_user(username, email, password)
         user.name = name
         user.pro = pro
+        user.save()"""
+
+    def save(self, *args, **kwargs):
+        username = self.cleaned_data.get("username")
+        password = self.cleaned_data.get("password")
+        user = super().save(commit=False)
+        user.username = username
+        user.set_password(password)
         user.save()

@@ -13,10 +13,9 @@ sqlparse = "==0.3.1"
 Django = "==2.2.5"
 pillow = "*"
 django-heroku = "*"
-<<<<<<< HEAD
+
 black = "*"
-=======
->>>>>>> 9e712cc3658af9f1f2a6d76d008fbdc2ecc1a630
+
 
 [requires]
 python_version = "3.8"

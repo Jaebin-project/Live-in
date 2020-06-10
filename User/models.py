@@ -1,8 +1,11 @@
 from django.db import models
+import uuid
+from django.core.mail import send_mail
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
 )
+from django.shortcuts import reverse
 
 # Create your models here
 
@@ -38,11 +41,25 @@ class User(AbstractBaseUser):
 
     object = UserManager()
 
+    GENDER_MALE = "Male"
+    GENDER_FEMALE = "Female"
+    GENDER_OTHER = "Other"
+
+    GENDER = (
+        (GENDER_MALE, ("Male")),
+        (GENDER_FEMALE, ("Female")),
+        (GENDER_OTHER, ("Other")),
+    )
+
     username = models.CharField(max_length=20, unique=True, null=True)
     name = models.CharField(max_length=20)
     email = models.EmailField()
     birth = models.DateField(null=True, blank=True)
+    gender = models.CharField(("gender"), choices=GENDER, max_length=10, blank=True)
     password = models.CharField(max_length=20)
+    tel = models.CharField(max_length=11, null=True, blank=True)
+    height = models.PositiveIntegerField(null=True, blank=True)
+    weight = models.PositiveIntegerField(null=True, blank=True)
     pro = models.BooleanField(default=False, blank=True)
 
     is_active = models.BooleanField(default=True)
@@ -50,6 +67,8 @@ class User(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     date_joined = models.DateTimeField(auto_now_add=True)
+    """email_verified = models.BooleanField(default=False)
+    email_secret = models.CharField(max_length=20, default="", blank=True)"""
 
     def has_perm(self, perm, obj=None):
         return self.is_admin
@@ -62,3 +81,14 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.username
+
+    def get_absolute_url(self):
+        return reverse("User:profile", kwargs={"pk": self.pk})
+
+
+"""def verift_email(self):
+    if self.email_verified is False:
+        secret = uuid.uuid4().hex[:20]
+        self.email_secret = secret
+        send_mail("Verify Jaebin Account", "Verify Account",  )
+    return """

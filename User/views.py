@@ -1,9 +1,9 @@
 from django.views import View
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import authenticate, login, logout
-from . import forms
+from . import forms, models
 
 
 class LoginView(FormView):
@@ -52,3 +52,7 @@ class SignUpView(FormView):
         if user is not None:
             login(self.request, user)
         return super().form_valid(form)
+
+
+class ProfileView(DetailView):
+    model = models.User

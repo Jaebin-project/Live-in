@@ -11,7 +11,7 @@ class LoginForm(forms.Form):
         password = self.cleaned_data.get("password")
 
         try:
-            user = models.User.objects.get(username=username)
+            user = models.User.object.get(username=username)
             if user.check_password(password):
                 return self.cleaned_data
             else:
@@ -27,7 +27,16 @@ class LoginForm(forms.Form):
 class SignUpForm(forms.ModelForm):
     class Meta:
         model = models.User
-        fields = ("username", "email", "pro", "birth")
+        fields = (
+            "username",
+            "email",
+            "gender",
+            "height",
+            "weight",
+            "birth",
+            "tel",
+            "pro",
+        )
 
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)

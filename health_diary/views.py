@@ -5,6 +5,9 @@ from .models import Post, Comment
 
 def index(request):
     posts = Post.objects.order_by('-pub_date')  # 최신순으로 정렬
+    if 'search' in request.GET:
+        search = request.GET['search']
+        posts = posts.filter(title__contains=search)
     return render(request, 'health_diary/index.html', {'posts': posts})
 
 def postform(request, post=None):

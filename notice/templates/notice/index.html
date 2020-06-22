@@ -71,13 +71,14 @@
         </div>
     </div>
 </div>
-<div class="food_notice clearfix">
+<div class="food_notice clearfix" id="notice">
     <h3>재빈이야기 자유게시판</h3>
     <form>
-        <input type="text" name="search" placeholder="Search" />
-        <button><a href="#"><img src="../../static/notice/img/search_icon.png" alt="" /></a></button>
+        <input type="text" name="search" placeholder="Search" value="{{ search }}" />
+        <button><a href="#notice"><img src="../../static/notice/img/search_icon.png" alt="" /></a></button>
     </form>
     <table>
+        {% if boards %}
         <thead>
             <tr>
                 <td>번호</td>
@@ -101,7 +102,7 @@
             </tr>
             {% endif %}
             {% endfor %}
-            <tr>
+            <!-- <tr>
                 <td>9</td>
                 <td>면역 치료 후 첫 외래</td>
                 <td>갸르미</td>
@@ -154,8 +155,11 @@
                 <td>딸아이 전처치 2일차 지났어요</td>
                 <td>유니혀니맘</td>
                 <td>20.03.17</td>
-            </tr>
+            </tr> -->
         </tbody>
+        {% else %}
+            <p>검색결과가 없습니다.</p>
+        {% endif %}
     </table>
     <button><a href="{% url 'new' %}">글쓰기</a></button>
 </div>

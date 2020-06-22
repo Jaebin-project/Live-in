@@ -7,6 +7,9 @@ from .models import Board, Comment
 
 def index(request):
     boards = Board.objects.order_by('-pub_date')    # 최신순으로 정렬
+    if 'search' in request.GET:
+        search = request.GET['search']
+        boards = boards.filter(title__contains=search)
     return render(request, 'notice/index.html', {'boards': boards})
 
 def boardform(request, board=None):

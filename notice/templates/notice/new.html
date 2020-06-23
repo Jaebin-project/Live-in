@@ -37,11 +37,6 @@
         </div>
         <div class="notice">
             <h3>글쓰기</h3>
-            <select name="notice">
-                <option value="">게시판 선택</option>
-                <option value="pro">전문가 칼럼</option>
-                <option value="nopro">일반인 게시판</option>
-            </select>
             <form method='POST'>
                 {% csrf_token %}
                 <table>

@@ -77,13 +77,13 @@
 <button><a href="{% url 'remove' pk=board.pk %}">삭제</a></button>
 <button><a href="{% url 'notice' %}">목록으로</a></button>
 
+ 댓글작성
 <form method="POST">
     {% csrf_token %}
     {{ form }}
     <input class='btn' type='submit' value="댓글쓰기">
 </form>
 
-<<<<<<< HEAD
  댓글목록
 {% for comment in board.comments.all %}
     {{ comment.content }}

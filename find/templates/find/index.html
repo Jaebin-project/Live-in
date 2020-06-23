@@ -1,108 +1,285 @@
+{% extends 'main/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% block head %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'find/layout.css' %}" type="text/css"/>
-    <title>Find Sub Page</title>
-</head>
-<body>
-    <div class="wrap">
-        <header>
-            <div class="logo">
-                <h1><a href="{% url 'main' %}"><img src="../../static/find/img/logo.png" alt=""/></a></h1>
-            </div>
-            <nav class="clearfix">
-                <div class="find">
-                    <img src="../../static/find/img/find.png" alt=""/>
-                </div>
-                <ul class="clearfix">
-                    <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
-                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
-                    <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
-                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
-                </ul>
-                <div class="time">
-                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
-                </div>
-            </nav>
-        </header>
-        <div class="search">
-            <div class="black"></div>
-            <div class="search_wrap">
-                <h3><img src="../../static/find/img/search_title.png" alt=""/></h3>
-                <form>
-                    <input type="text" name="name" value="병원 이름을 입력해주세요."/>
-                </form>
-                <button>
+    <style>
+        .image{
+            width:100%;
+            height:676px;
+            background-image:url("../../static/find/img/search_main_img.jpg");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index:-1;
+            position:relative;
+            top:-15px;
+        }
+        .search_wrap{
+            width:1200px;
+            margin:0 auto;
+            position:relative;
+            top:-600px;
+            left:123px;
+        }
+        .search_wrap img:nth-child(3){
+            margin-top:16px;
+        }
+        .city_choice{
+            margin-top:10px;
+        }
+        .wrap footer {
+        width: 1200px;
+        margin: 0 auto;
+        margin-top: 64px;
+        margin-bottom: 40px; }
+        .wrap footer img:nth-child(1) {
+        margin-left: 66px;
+        cursor: pointer; }
+        .wrap footer img:nth-child(2) {
+        margin-top: -18px;
+        margin-left: 60px; }
+    </style>
+{% endblock head %}
+
+{% block main %}
+    <!--<div class="search">-->
+        <div class="image"></div>
+        <div class="black"></div>
+        <div class="search_wrap">
+            <h3><img src="../../static/find/img/search_title.png" alt=""/></h3>
+            <form id="search" action="" method="GET">
+                <input id="searchword" type="search" name="keyword" placeholder="병원 이름을 입력해주세요." value="{{ keyword }}">
+                <button type="submit">
                     <img src="../../static/find/img/search_icon.png" alt=""/>
                     <label>search</label>
                 </button>
-                <img src="../../static/find/img/city_title.png" alt=""/>
-                <div class="city_choice clearfix">
-                    <div class="city_box">
-                        <img src="" alt=""/>
-                        <span>서울</span>
+            </form>
+            
+            <img src="../../static/find/img/city_title.png" alt="지역구로 찾기"/>
+            <div class="city_choice clearfix">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#all" aria-expanded="false" aria-controls="collapseExample">
+                    전체
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#서울" aria-expanded="false" aria-controls="collapseExample">
+                    서울
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#경기" aria-expanded="false" aria-controls="collapseExample">
+                    경기
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#강원" aria-expanded="false" aria-controls="collapseExample">
+                    강원
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#충청" aria-expanded="false" aria-controls="collapseExample">
+                    충청
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#전라" aria-expanded="false" aria-controls="collapseExample">
+                    전라
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#경상" aria-expanded="false" aria-controls="collapseExample">
+                    경상
+                </button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#제주" aria-expanded="false" aria-controls="collapseExample">
+                    제주
+                </button>
+            </div>
+        </div>
+
+        {% for hospital in hospitals %}
+            <div id= "results" class="hospital_info clearfix">
+                <a href="{% url 'Hospital_detail' hospital.id %}">
+                <div class="hospital_box">
+                    <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                    <div class="hospital_text">
+                        <span>{{ hospital.name }}</span>
+                        <p>{{ hospital.address }}</p>
                     </div>
-                    <div class="city_box">
-                        <img src="" alt=""/>
-                        <span>경인</span>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+
+            <div class="hospital_contents">
+                <div class="collapse" id="all">
+                    <div class="card card-body">
+                            <h3>전국 재빈병원</h3>
+                            <div id= "results" class="hospital_info clearfix">
+                                {% for hospital in hospitals.all %}
+                                <a href="{% url 'Hospital_detail' hospital.id %}"><div class="hospital_box">
+                                    <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                                    <div class="hospital_text">
+                                        <span>{{ hospital.name }}</span>
+                                        <p>{{ hospital.address }}</p>
+                                    </div>
+                                </div></a>
+                                {% endfor %}
+                            </div>
                     </div>
-                    <div class="city_box">
-                        <img src="" alt=""/>
-                        <span>강원</span>
+                </div>
+                <div class="collapse" id="서울">
+                    <div class="card card-body">
+                            <h3><b>서울</b>에 있는 재빈병원</h3>
+                            <div id= "results" class="hospital_info clearfix">
+                                {% for hospital in hospitals.all %}
+                                {% if hospital.zone == 1 %}
+                                <a href="{% url 'Hospital_detail' hospital.id %}"><div class="hospital_box">
+                                    <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                                    <div class="hospital_text">
+                                        <span>{{ hospital.name }}</span>
+                                        <p>{{ hospital.address }}</p>
+                                    </div>
+                                </div></a>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
                     </div>
-                    <div class="city_box">
-                        <img src="" alt=""/>
-                        <span>충청</span>
+                </div>
+                <div class="collapse" id="경기">
+                    <div class="card card-body">
+                            <h3><b>경기</b>에 있는 재빈병원</h3>
+                        <div id= "results" class="hospital_info clearfix">
+                            {% for hospital in hospitals.all %}
+                            {% if hospital.zone == 2 %}
+                            <a href="{% url 'Hospital_detail' hospital.id %}"><div class="hospital_box">
+                                <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                                <div class="hospital_text">
+                                    <span>{{ hospital.name }}</span>
+                                    <p>{{ hospital.address }}</p>
+                                </div>
+                            </div></a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="city_box">
-                        <img src="" alt=""/>
-                        <span>전라</span>
+                </div>
+                <div class="collapse" id="강원">
+                    <div class="card card-body">
+                        <h3><b>강원</b>에 있는 재빈병원</h3>
+                        <div id= "results" class="hospital_info clearfix">
+                            {% for hospital in hospitals.all %}
+                            {% if hospital.zone == 3 %}
+                            <a href="{% url 'Hospital_detail' hospital.id %}"><div class="hospital_box">
+                                <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                                <div class="hospital_text">
+                                    <span>{{ hospital.name }}</span>
+                                    <p>{{ hospital.address }}</p>
+                                </div>
+                            </div></a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="city_box">
-                        <img src="" alt=""/>
-                        <span>경상</span>
+                </div>
+                <div class="collapse" id="충청">
+                    <div class="card card-body">
+                        <h3><b>충청</b>에 있는 재빈병원</h3>
+                        <div id= "results" class="hospital_info clearfix">
+                            {% for hospital in hospitals.all %}
+                            {% if hospital.zone == 4 %}
+                            <a href="{% url 'Hospital_detail' hospital.id %}"><div class="hospital_box">
+                                <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                                <div class="hospital_text">
+                                    <span>{{ hospital.name }}</span>
+                                    <p>{{ hospital.address }}</p>
+                                </div>
+                            </div></a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
-                    <div class="city_box">
-                        <img src="" alt=""/>
-                        <span>제주</span>
+                </div>
+                <div class="collapse" id="전라">
+                    <div class="card card-body">
+                        <h3><b>전라</b>에 있는 재빈병원</h3>
+                        <div id= "results" class="hospital_info clearfix">
+                            {% for hospital in hospitals.all %}
+                            {% if hospital.zone == 5 %}
+                            <a href="{% url 'Hospital_detail' hospital.id %}"><div class="hospital_box">
+                                <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                                <div class="hospital_text">
+                                    <span>{{ hospital.name }}</span>
+                                    <p>{{ hospital.address }}</p>
+                                </div>
+                            </div></a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="경상">
+                    <div class="card card-body">
+                        <h3><b>경상</b>에 있는 재빈병원</h3>
+                        <div id= "results" class="hospital_info clearfix">
+                            {% for hospital in hospitals.all %}
+                            {% if hospital.zone == 6 %}
+                            <a href="{% url 'Hospital_detail' hospital.id %}"><div class="hospital_box">
+                                <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                                <div class="hospital_text">
+                                    <span>{{ hospital.name }}</span>
+                                    <p>{{ hospital.address }}</p>
+                                </div>
+                            </div></a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="제주">
+                    <div class="card card-body">
+                        <h3><b>제주</b>에 있는 재빈병원</h3>
+                        <div id= "results" class="hospital_info clearfix">
+                            {% for hospital in hospitals.all %}
+                            {% if hospital.zone == 7 %}
+                            <a href="{% url 'Hospital_detail' hospital.id %}"><div class="hospital_box">
+                                <img src="{{ hospital.img.url }}" height="300" width="300" alt="병원이미지">
+                                <div class="hospital_text">
+                                    <span>{{ hospital.name }}</span>
+                                    <p>{{ hospital.address }}</p>
+                                </div>
+                            </div></a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="hospital_contents">
-            <h3><img src="../../static/find/img/search_result_title.png" alt=""/></h3>
-            <div class="hospital_info clearfix">
-                <div class="hospital_box">
-                    <img src="../../static/find/img/hospital1.png" alt=""/>
-                    <div class="hospital_text">
-                        <span>서울 성모 혈액 병원</span>
-                        <p>서울 서초구 반포대로 222지번 반포동 505 가톨릭중앙의료원 새병원 및 성의회관</p>
-                    </div>
+
+            <!-- <div class="city_choice clearfix">
+                <div class="city_box">
+                    <img src="" alt="서울"/>
+                    <span>서울</span>
                 </div>
-                <div class="hospital_box">
-                    <img src="../../static/find/img/hospital2.png" alt=""/>
-                    <div class="hospital_text">
-                        <span>삼성 서울 병원</span>
-                        <p>서울특별시 강남구 일원로 81 (06351) 삼성서울병원</p>
-                    </div>
+                <div class="city_box">
+                    <img src="" alt=""/>
+                    <span>경인</span>
                 </div>
-                <div class="hospital_box">
-                    <img src="../../static/find/img/hospital3.png" alt=""/>
-                    <div class="hospital_text">
-                        <span>분당 제생 병원</span>
-                        <p>13590 경기도 성남시 분당구 서현로 180번길 20(서현동 255-2)</p>
-                    </div>
+                <div class="city_box">
+                    <img src="" alt=""/>
+                    <span>강원</span>
                 </div>
-            </div>
-        </div>
-        <footer>
-            <a href="{% url 'main' %}"><img src="../../static/find/img/footer_logo.png" alt=""/></a>
-            <img src="../../static/find/img/footer_text.png" alt=""/>
-        </footer>
+                <div class="city_box">
+                    <img src="" alt=""/>
+                    <span>충청</span>
+                </div>
+                <div class="city_box">
+                    <img src="" alt=""/>
+                    <span>전라</span>
+                </div>
+                <div class="city_box">
+                    <img src="" alt=""/>
+                    <span>경상</span>
+                </div>
+                <div class="city_box">
+                    <img src="" alt=""/>
+                    <span>제주</span>
+                </div>
+            </div> -->
     </div>
-</body>
-</html>
+{% endblock main %}
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endblock js %}

@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+
+{% block main %}
+    <h1>여기는 병원 정보와 리뷰를 보여주는 디테일 페이지</h1>
+
+    <img src="{{hospital.img.url}}" alt="">
+    <p>{{hospital.name}}</p>
+    <p>{{hospital.info}}</p>
+    <a href="{{hospital.site_url}}">{{hospital.site_url}}</a>
+    <p>{{hospital.tel}}</p>
+    <p>{{hospital.address}}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit"></button>
+    </form>
+
+    {% for review in hospital.reviews.all %}
+    <hr>
+        {% if review.score == 5 %}
+        ★★★★★
+        {% elif review.score == 4 %}
+        ★★★★☆
+        {% elif review.score == 3 %}
+        ★★★☆☆
+        {% elif review.score == 2 %}
+        ★★☆☆☆
+        {% elif review.score == 1 %}
+        ★☆☆☆
+        {% else %}
+        ☆☆☆☆☆
+        {% endif %}
+        <p>{{review.content}}</p>
+    {% endfor %}
+{% endblock main %}

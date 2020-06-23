@@ -8,11 +8,14 @@
 	<link rel="stylesheet" href="{% static 'mypage/layout.css' %}" type="text/css"/>
 	<link rel="stylesheet" href="{% static 'mypage/main.css' %}" type="text/css"/>
 	<link rel="stylesheet" href="{% static 'mypage/day_main.css' %}" type="text/css"/>
+	<link rel="stylesheet" href="{% static 'mypage/slick/slick.css' %}" type="text/css"/>
+	<link rel="stylesheet" href="{% static 'mypage/slick/slick-theme.css' %}" type="text/css"/>
 	<script src="{% static 'mypage/js/main.js' %}" type="text/javascript" text="javascript"></script>
 	<script src="{% static 'mypage/js/day_main.js' %}" type="text/javascript" text="javascript"></script>
 	<script src="{% static 'mypage/js/interaction_main.js' %}" type="text/javascript" text="javascript"></script>
 	<script src="{% static 'mypage/js/jquery-3.5.0.js' %}" type="text/javascript" text="javascript"></script>
 	<script src="{% static 'mypage/js/diary.js' %}" type="text/javascript" text="javascript"></script>
+	<script src="{% static 'mypage/slick/slick.js' %}" type="text/javascript" text="javascript"></script>
 	<title>My Page</title>
 	<script>
 		
@@ -33,30 +36,24 @@
 			editable: true,
 			eventLimit: true, // allow "more" link when too many events
 			events: [
-			{
-				  title : '새로운 일정 추가',
-				  start : '2020-05-21',
-					end : '2020-05-22',
-			  },
-			  {
-				  title : '프젝',
-				  start : '2020-05-16',
-				  end : '2020-05-23',
-			  },
-			  {
-				  title : '일정추가2',
-				  start : '2020-05-19',
-				  end : '2020-05-30',
-			  },
-			  {
-				  title : '일정추가3',
-				  start : '2020-05-19',
-				  end : '2020-05-30',
-			  },
+
 			]
 		  });
 	  
 		  calendar.render();
+
+		  $('.slides').slick({
+			slidesToShow: 1,
+			slidesToScroll: 1,
+			autoplay: true,
+			autoplaySpeed: 2000,
+			});
+			$('.modal form').submit(function(){
+				var emotion = $('.diary-emotion').val();
+				if(emotion == 1){
+					$('.slides tr td').css('color', 'red');
+				}
+			});
 		});
 	  
 	  </script>
@@ -155,6 +152,9 @@
 			color:#fff;
 			padding:14px;
 		}
+		.numeric_diary .diary_table thead td:nth-child(6){
+			width:460px;
+		}
 		.numeric_diary .diary_table tbody td{
 			width:110px;
 			font-size:15px;
@@ -162,28 +162,8 @@
 			color:#696969;
 			padding:14px;
 		}
-		.comment_page{
-			width:280px;
-			position:absolute;
-			top:-4px;
-			left:922px;
-		}
-		.comment_page span{
-			font-size:32px;
-			font-weight:700;
-			color:#0d0d0d;
-		}
-		.comment_page p{
-			font-size:16px;
-			font-weight:400;
-			color:#bcbcbc;
-			margin-left:58px;
-			margin-top:-12px;
-		}
-		.comment_page img{
-			width:180px;
-			margin-top:24px;
-			margin-left:52px;
+		.numeric_diary .diary_table tbody td:nth-child(6){
+			width:460px;
 		}
 		.comment_page button{
 			width:140px;
@@ -193,8 +173,8 @@
 			color:#fff;
 			font-size:18px;
 			font-weight:400;
-			margin-top:60px;
-			margin-left:188px;
+			margin-top:300px;
+			margin-left:1050px;
 			cursor:pointer;
 		}
 		.modal_back{
@@ -240,7 +220,7 @@
 					margin-top:10px;
 				}
 				.modal_body textarea{
-					width:694px;
+					width:710px;
 					height:100px;
 				}
 				.diary-date{
@@ -265,7 +245,7 @@
 					margin-left:4px;
 				}
 		.wrap footer{
-			margin-top:420px;
+			margin-top:100px;
 		}
 	  </style>
 </head>
@@ -308,9 +288,9 @@
 					<img src="../../static/mypage/img/add_plan_title.png" alt=""/>
 				</div>
 				<label>시작일</label>
-				<input type="date" value="2020-05-19"/>
+				<input type="date" value="2020-05-28"/>
 				<label>종료일</label>
-				<input type="date" value="2020-05-19"/>
+				<input type="date" value="2020-05-28"/>
 				<label>병원 일정</label>
 				<input type="text" placeholder="진료 및 치료내용을 등록하세요."/>
 				<button type="submit">일정등록</button>
@@ -329,10 +309,24 @@
 							<td>중성구</td>
 							<td>헤모글로빈</td>
 							<td>혈소판</td>
-							<td>이모티콘</td>
+							<td>간단한 오늘 하루</td>
 						</tr>
 					</thead>
 					<tbody>
+						<div class="slick_slide">
+							{% for diary in op_list %}
+							<div class="slides">
+								<tr>
+									<td>{{ diary.date }}</td>
+									<td>{{ diary.WBC }}</td>
+									<td>{{ diary.neutrophil }}</td>
+									<td>{{ diary.RBC }}</td>
+									<td>{{ diary.PT }}</td>
+									<td>{{ diary.content }}</td>
+								</tr>
+							</div>
+							{% endfor %}
+						</div>
 						<!--
 						<tr>
 							<td>9/21</td>
@@ -343,6 +337,7 @@
 							<td>좋아요</td>
 						</tr>
 						-->
+						<!--
 						{% for diary in op_list %}
 						<tr>
 							<td>{{ diary.date }}</td>
@@ -353,9 +348,14 @@
 							<td></td>
 						</tr>
 						{% endfor %}
+						-->
 					</tbody>
 				</table>
 			</div>
+			<div class="comment_page">
+				<button type="submit">글쓰기</button>
+			</div>
+			<!--
 			<div class="comment_page">
 				<span>19</span>
 				{% for diary in op_list %}
@@ -364,6 +364,7 @@
 				<img src="../../static/mypage/img/happy.png" alt=""/>
 				<button type="submit">글쓰기</button>
 			</div>
+			-->
 		</div>
 		<div class="modal_back"></div>
         <div class="modal">
@@ -375,7 +376,7 @@
 				<div class="modal_body">
 					{{ form.as_table }}
 				</div>
-				<button type="submit">등록</button>
+				<button type="submit" id="emotion_change">등록</button>
 				<button id="close">닫기</button>
 			</form>
         </div>

@@ -129,86 +129,81 @@ button {
       .wrap .main .main_wrap h3 {
         margin-top: 118px;
         margin-left: 420px; }
-  .wrap .diary_notice {
-    width: 1200px;
-    margin: 0 auto;
-    margin-top: 70px; }
-    .wrap .diary_notice h3 {
-      font-size: 16px;
-      font-weight: 900;
-      color: #2cacdb;
-      margin-left: 68px; }
-    .wrap .diary_notice form {
-      float: right;
-      margin-top: -21px;
-      margin-right: 50px; }
-    .wrap .diary_notice table {
-      width: 1100px;
-      margin: 0 auto;
-      margin-top: 29px;
-      border-top: 2px solid #2cacdb; }
-      .wrap .diary_notice table thead tr {
-        height: 55px; }
-        .wrap .diary_notice table thead tr td {
-          font-size: 18px;
-          font-weight: 400;
-          color: #5c5e5e;
-          text-align: center;
-          padding: 20px 0px; }
-          .wrap .diary_notice table thead tr td:nth-child(1) {
-            width: 94px; }
-          .wrap .diary_notice table thead tr td:nth-child(2) {
-            width: 500px; }
-          .wrap .diary_notice table thead tr td:nth-child(3) {
-            width: 148px; }
-          .wrap .diary_notice table thead tr td:nth-child(4) {
-            width: 148px; }
-          .wrap .diary_notice table thead tr td:nth-child(5) {
-            width: 98px; }
-      .wrap .diary_notice table tbody tr {
-        height: 46px;
-        border-top: 1px solid #edf0f3; }
-        .wrap .diary_notice table tbody tr:nth-child(1) {
-          border-top: 1px solid #a4dff5; }
-        .wrap .diary_notice table tbody tr td {
-          font-size: 14px;
-          font-weight: 400;
-          color: #929292;
-          text-align: center;
-          padding: 20px 0px;
-          cursor: pointer; }
-          .wrap .diary_notice table tbody tr td:nth-child(1) {
-            width: 94px; }
-          .wrap .diary_notice table tbody tr td:nth-child(2) {
-            width: 500px; }
-          .wrap .diary_notice table tbody tr td:nth-child(3) {
-            width: 148px; }
-          .wrap .diary_notice table tbody tr td:nth-child(4) {
-            width: 148px; }
-          .wrap .diary_notice table tbody tr td:nth-child(5) {
-            width: 98px; }
-    .wrap .diary_notice button {
-      width: 80px;
-      height: 28px;
-      background-color: #fff;
-      border: 1px solid #dedede;
-      float: right;
-      margin-top: 27px;
-      cursor: pointer;
-      font-size: 14px;
-      font-weight: 400;
-      color: #777; }
-      .wrap .diary_notice button:nth-child(4) {
-        margin-right: 50px; }
-      .wrap .diary_notice button:nth-child(5) {
-        margin-right: 10px; }
-  .wrap footer {
-    width: 1200px;
-    margin: 0 auto;
-    margin-top: 54px;
-    margin-bottom: 40px; }
-    .wrap footer img:nth-child(1) {
-      margin-left: 66px; }
-    .wrap footer img:nth-child(2) {
-      margin-top: -18px;
-      margin-left: 60px; }
+
+        .wrap .content{
+            width:1200px;
+            margin:0 auto;
+            margin-top:60px;
+            position:relative;
+        }
+        .wrap .content_title{
+            width:500px;
+            margin-left:80px;
+            margin-top:200px;
+        }
+        .wrap .content_title span:nth-child(1){
+            font-size:12px;
+            font-weight:400;
+            color:#afafaf;
+        }
+        .wrap .content_title h3{
+            font-size:28px;
+            font-weight:700;
+            color:#191919;
+            margin-top:8px;
+        }
+        .wrap .content_title span:nth-child(3){
+            font-size:14px;
+            font-weight:500;
+            color:#6f6f6f;
+            position:relative;
+            top:10px;
+        }
+
+        .wrap .content img{
+            position:absolute;
+            top:-110px;
+            left:600px;
+        }
+
+        .wrap .content_desc{
+            width:460px;
+            height:400px;
+            background-color:#fff;
+            margin-left:100px;
+            margin-top:60px;
+
+        }
+
+        .wrap .content_desc p{
+            font-size:14px;
+            font-weight:500;
+            line-height:26px;
+            color:#b1b1b1;
+        }
+
+        .wrap .content button{
+            width:120px;
+            height:40px;
+            border:1px solid #2cacdb;
+            background-color:#2cacdb;
+            opacity:0.7;
+            font-size:16px;
+            font-weight:500;
+            color:#fff;
+        }
+
+        .wrap .content button:nth-child(4){
+            margin-left:60px;
+        }
+        
+          .wrap footer {
+            width: 1200px;
+            margin: 0 auto;
+            margin-top: 240px;
+            margin-bottom: 40px; }
+            .wrap footer img:nth-child(1) {
+              margin-left: 66px; }
+            .wrap footer img:nth-child(2) {
+              margin-top: -18px;
+              margin-left: 60px; }

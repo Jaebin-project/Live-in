@@ -1,4 +1,9 @@
 {% extends 'main/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'find/layout.css' %}" type="text/css"/>
+{% endblock head %}
 
 {% block main %}
     <h1>여기는 병원 정보와 리뷰를 보여주는 디테일 페이지</h1>

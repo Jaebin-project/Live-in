@@ -7,6 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'health_diary/layout.css' %}" type="text/css"/>
     <title>Diary Page</title>
+    <style>
+        .wrap .diary_notice form{
+            position:relative;
+        }
+        .wrap .diary_notice form input {
+        width: 300px;
+        height: 35px;
+        background-color: #fff;
+        border: 1px solid #dedede;
+        border-radius: 15px; }
+        .wrap .diary_notice form input::-webkit-input-placeholder {
+          font-size: 14px;
+          font-weight: 400px;
+          color: #ccc;
+          padding-left: 18px; }
+        .wrap .diary_notice form input:-ms-input-placeholder {
+          font-size: 14px;
+          font-weight: 400px;
+          color: #ccc;
+          padding-left: 18px; }
+        .wrap .diary_notice form input::-ms-input-placeholder {
+          font-size: 14px;
+          font-weight: 400px;
+          color: #ccc;
+          padding-left: 18px; }
+        .wrap .diary_notice form input::placeholder {
+          font-size: 14px;
+          font-weight: 400px;
+          color: #ccc;
+          padding-left: 18px; }
+      .wrap .diary_notice form button {
+        width: 64px;
+        height: 35px;
+        margin-top: 0px;
+        position: absolute;
+        background-color:#fff;
+        left: 236px;
+        border: none;
+        font-size: 14px;
+        font-weight: 400;
+        color: #fff;
+        cursor: pointer; 
+        z-index:4;
+        border-radius:15px;}
+    </style>
 </head>
 <body>
     <div class="wrap">
@@ -38,12 +83,8 @@
         <div class="diary_notice clearfix">
             <h3>Health Diary : 투병일기</h3>
             <form>
-                <select>
-                    <option value="title">제목</option>
-                    <option value="content">내용</option>
-                </select>
-                <input type="text" name="search" value=""/>
-                <button><a href="#">검색</a></button>
+                <input type="text" name="search" placeholder="Search"/>
+                <button><a href="#"><img src="../../static/health_diary/img/search_icon.png" alt=""/></a></button>
             </form>
             <table>
                 <thead>
@@ -60,7 +101,7 @@
                     {% for post in posts.all %}
                     <tr>
                         <td>{{ post.id }}</td>
-                        <td><a href="{% url 'detail' post.id %}">{{ post.title }}</a></td>
+                        <td><a href="{% url 'content' post.id %}">{{ post.title }}</a></td>
                         <!-- 작성자는 로그인기능 구현이후에.. -->
                         <!-- <td>{{ post.User_id.name }}</td> -->
                         <td>{{ post.pub_date }}</td>
@@ -131,7 +172,7 @@
                     </tr> -->
                 </tbody>
             </table>
-            <button><a href="{% url 'new' %}">글쓰기</a></button>
+            <button><a href="{% url 'write' %}">글쓰기</a></button>
             <!-- <button><a href="#">목록</a></button> -->
         </div>
         <footer>

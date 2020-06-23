@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'health_diary/detail.css' %}" type="text/css"/>
+    <title>Health Diary Detail</title>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo">
+                <h1><a href="{% url 'main' %}"><img src="../../static/health_diary/img/logo.png" alt=""/></a></h1>
+            </div>
+            <nav class="clearfix">
+                <div class="find">
+                    <img src="../../static/health_diary/img/find.png" alt=""/>
+                </div>
+                <ul class="clearfix">
+                    <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
+                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
+                    <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
+                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
+                </ul>
+                <div class="time">
+                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
+                </div>
+            </nav>
+        </header>
+        <div class="main">
+            <div class="black"></div>
+            <div class="main_wrap">
+                <h3><img src="../../static/health_diary/img/main_text.png" alt=""/></h3>
+            </div>
+        </div>
+        <div class="content">
+            <div class="content_title">
+                <span>투병일기</span>
+                <h3>{{ post.title }}</h3>
+                <span>{{ post.pub_date }}</span>
+            </div>
+            <img src="../../static/health_diary/img/diary_img.jpg" alt=""/>
+            <div class="content_desc">
+                <p>{{ post.content }}</p>
+            </div>
+            <button><a href="{% url 'recontent' pk=post.pk %}">수정</a></button>
+            <button><a href="{% url 'delete' pk=post.pk %}">삭제</a></button>
+            <button><a href="{% url 'health_diary' %}">목록</a></button>
+        </div>
+        <footer>
+            <a href="{% url 'main' %}"><img src="../../static/health_diary/img/footer_logo.png" alt=""/></a>
+            <img src="../../static/health_diary/img/footer_text.png" alt=""/>
+        </footer>
+    </div>
+</body>
+</html>
+<!--
+<h1>{{ post.title }}</h1>
+<p>{{ post.pub_date }}</p>
+<p>{{ post.content }}</p>
+<br><br>
+<button><a href="{% url 'edit' pk=post.pk %}">수정</a></button>
+<button><a href="{% url 'remove' pk=post.pk %}">삭제</a></button>
+<button><a href="{% url 'health_diary' %}">목록으로</a></button>
+-->

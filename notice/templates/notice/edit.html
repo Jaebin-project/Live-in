@@ -1,31 +1,55 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% load  static %}
 
-{% block head %}
-<link rel="stylesheet" href="{% static 'notice/new.css' %}" type="text/css" />
-{% endblock head %}
-
-{% block main %}
-<div class="main">
-    <div class="black"></div>
-    <div class="main_wrap">
-        <h3><img src="../../static/notice/img/main_text.png" alt="" /></h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'notice/new.css' %}" type="text/css"/>
+    <title>Notice - new</title>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo">
+                <h1><a href="{% url 'main' %}"><img src="../../static/notice/img/logo.png" alt=""/></a></h1>
+            </div>
+            <nav class="clearfix">
+                <div class="find">
+                    <img src="../../static/notice/img/find.png" alt=""/>
+                </div>
+                <ul class="clearfix">
+                    <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
+                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
+                    <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
+                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
+                </ul>
+                <div class="time">
+                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
+                </div>
+            </nav>
+        </header>
+        <div class="main">
+            <div class="black"></div>
+            <div class="main_wrap">
+                <h3><img src="../../static/notice/img/main_text.png" alt=""/></h3>
+            </div>
+        </div>
+        <div class="notice">
+            <h3>글쓰기</h3>
+            <form method='POST'>
+                {% csrf_token %}
+                <table>
+                    {{ form.as_table }}
+                </table>
+                
+                <button type="submit">저장</button>
+            </form>
+        </div>
+        <footer>
+            <a href="{% url 'main' %}"><img src="../../static/notice/img/footer_logo.png" alt=""/></a>
+            <img src="../../static/notice/img/footer_text.png" alt=""/>
+        </footer>
     </div>
-</div>
-<div class="notice">
-    <h3>글쓰기</h3>
-    <select name="notice">
-        <option value="">게시판 선택</option>
-        <option value="pro">전문가 칼럼</option>
-        <option value="nopro">일반인 게시판</option>
-    </select>
-    <form method='POST'>
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-
-        <button type="submit">저장</button>
-    </form>
-</div>
-{% endblock main %}
+</body>
+</html>

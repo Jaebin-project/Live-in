@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'health_diary/edit.css' %}" type="text/css"/>
+    <title>Health Diary Edit</title>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo">
+                <h1><a href="{% url 'main' %}"><img src="{% static 'health_diary/img/logo.png' %}" alt=""/></a></h1>
+            </div>
+            <nav class="clearfix">
+                <div class="find">
+                    <img src="../../static/health_diary/img/find.png" alt=""/>
+                </div>
+                <ul class="clearfix">
+                    <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
+                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
+                    <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
+                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
+                </ul>
+                <div class="time">
+                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
+                </div>
+            </nav>
+        </header>
+        <div class="main">
+            <div class="black"></div>
+            <div class="main_wrap">
+                <h3><img src="../../static/health_diary/img/main_text.png" alt=""/></h3>
+            </div>
+        </div>
+        <div class="write_wrap clearfix">
+            <div class="heart">
+                <img src="../../static/health_diary/img/heart_img.jpg" alt=""/>
+            </div>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <h2 class="heading">투병일기 : 글쓰기</h2>
+                    <div class="controls">
+                        {{ form.title }}
+                    </div>
+                    <div class="grid">
+                        <div class="controls">
+                            {{ form.content }}
+                        </div>
+                        <button type="submit" value="Submit" class="col-1-4">제출하기</button>
+                    </div>  
+                </div>
+            </form>
+        </div>
+        <footer>
+            <a href="{% url 'main' %}"><img src="../../static/health_diary/img/footer_logo.png" alt=""/></a>
+            <img src="../../static/health_diary/img/footer_text.png" alt=""/>
+        </footer>
+    </div>
+</body>
+</html>
+
+<!--
+<h1>수정페이지</h1>
+<form action="POST">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <button type="submit">저장하기</button>
+</form>
+-->

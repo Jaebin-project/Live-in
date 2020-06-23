@@ -1,5 +1,5 @@
 {% extends 'main/base.html' %}
-{% load static %}
+{% load  static %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'notice/layout.css' %}" type="text/css" />
@@ -158,7 +158,7 @@
             </tr> -->
         </tbody>
         {% else %}
-            <p>검색결과가 없습니다.</p>
+        <p>검색결과가 없습니다.</p>
         {% endif %}
     </table>
     <button><a href="{% url 'new' %}">글쓰기</a></button>

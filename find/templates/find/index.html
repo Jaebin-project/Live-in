@@ -4,10 +4,48 @@
 {% block head %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'find/layout.css' %}" type="text/css"/>
+    <style>
+        .image{
+            width:100%;
+            height:676px;
+            background-image:url("../../static/find/img/search_main_img.jpg");
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            z-index:-1;
+            position:relative;
+            top:-15px;
+        }
+        .search_wrap{
+            width:1200px;
+            margin:0 auto;
+            position:relative;
+            top:-600px;
+            left:123px;
+        }
+        .search_wrap img:nth-child(3){
+            margin-top:16px;
+        }
+        .city_choice{
+            margin-top:10px;
+        }
+        .wrap footer {
+        width: 1200px;
+        margin: 0 auto;
+        margin-top: 64px;
+        margin-bottom: 40px; }
+        .wrap footer img:nth-child(1) {
+        margin-left: 66px;
+        cursor: pointer; }
+        .wrap footer img:nth-child(2) {
+        margin-top: -18px;
+        margin-left: 60px; }
+    </style>
 {% endblock head %}
 
 {% block main %}
-    <!-- <div class="search"> -->
+    <!--<div class="search">-->
+        <div class="image"></div>
         <div class="black"></div>
         <div class="search_wrap">
             <h3><img src="../../static/find/img/search_title.png" alt=""/></h3>

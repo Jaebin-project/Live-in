@@ -2,7 +2,52 @@
 {% load static %}
 
 {% block head %}
-    <link rel="stylesheet" href="{% static 'health_diary/layout.css'%}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'health_diary/layout.css' %}" type="text/css"/>
+    <style>
+        .wrap .diary_notice form{
+            position:relative;
+        }
+        .wrap .diary_notice form input {
+        width: 300px;
+        height: 35px;
+        background-color: #fff;
+        border: 1px solid #dedede;
+        border-radius: 15px; }
+        .wrap .diary_notice form input::-webkit-input-placeholder {
+          font-size: 14px;
+          font-weight: 400px;
+          color: #ccc;
+          padding-left: 18px; }
+        .wrap .diary_notice form input:-ms-input-placeholder {
+          font-size: 14px;
+          font-weight: 400px;
+          color: #ccc;
+          padding-left: 18px; }
+        .wrap .diary_notice form input::-ms-input-placeholder {
+          font-size: 14px;
+          font-weight: 400px;
+          color: #ccc;
+          padding-left: 18px; }
+        .wrap .diary_notice form input::placeholder {
+          font-size: 14px;
+          font-weight: 400px;
+          color: #ccc;
+          padding-left: 18px; }
+      .wrap .diary_notice form button {
+        width: 64px;
+        height: 35px;
+        margin-top: 0px;
+        position: absolute;
+        background-color:#fff;
+        left: 236px;
+        border: none;
+        font-size: 14px;
+        font-weight: 400;
+        color: #fff;
+        cursor: pointer; 
+        z-index:4;
+        border-radius:15px;}
+    </style>
 {% endblock head %}
 
 {% block main %}
@@ -18,15 +63,6 @@
                 <input type="text" name="search" placeholder="Search" value="{{ search }}" />
                 <button><a href="#diary_notice"><img src="../../static/notice/img/search_icon.png" alt="" /></a></button>
             </form>
-            <!-- <form>
-                <select>
-                    <option value="title">제목</option>
-                    <option value="content">내용</option>
-                </select>
-                <input type="text" name="search" placeholder="" value="{{ search }}"/>
-                <button><a href="#diary_notice">검색</a></button>
-            </form> -->
-            
             <table>
             {% if posts %}    
                 <thead>
@@ -35,6 +71,7 @@
                         <td>제목</td>
                         <td>작성자</td>
                         <td>작성일</td>
+                        <!-- <td>조회수</td> -->
                     </tr>
                 </thead>
                 <tbody>
@@ -42,10 +79,9 @@
                     {% for post in posts.all %}
                     <tr>
                         <td>{{ post.id }}</td>
-                        <td><a href="{% url 'detail_hd' post.id %}">{{ post.title }}</a></td>
+                        <td><a href="{% url 'content' post.id %}">{{ post.title }}</a></td>
                         <!-- 작성자는 로그인기능 구현이후에.. -->
-                        <!-- <td>{{ post.User_id.name }}</td> -->
-                        <td>작성자</td>
+                        <td>{{ post.User_id.name }}</td>
                         <td>{{ post.pub_date }}</td>
                     </tr>
                     {% endfor %}
@@ -54,62 +90,69 @@
                         <td>면역 치료 후 첫 외래</td>
                         <td>갸르미</td>
                         <td>20.04.13</td>
+                        <td>182</td>
                     </tr>
                     <tr>
                         <td>8</td>
                         <td>이식 +19 골수검사 퇴원이야기</td>
                         <td>유니혀니맘</td>
                         <td>20.04.13</td>
+                        <td>219</td>
                     </tr>
                     <tr>
                         <td>7</td>
                         <td>무균실 탈출...</td>
                         <td>빼짱</td>
                         <td>20.04.11</td>
+                        <td>214</td>
                     </tr>
                     <tr>
                         <td>6</td>
                         <td>이식이후 백일</td>
                         <td>skyhyun</td>
                         <td>20.04.10</td>
+                        <td>276</td>
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>이식 14일째 드디어 꿈틀 간정맥폐쇄증 의심</td>
                         <td>유니혀니맘</td>
                         <td>20.04.08</td>
+                        <td>297</td>
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>atg 어제부로 끝났네요.</td>
                         <td>갸르미</td>
                         <td>20.04.07</td>
+                        <td>193</td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>4월 1일 이식합니다. </td>
                         <td>빼짱</td>
                         <td>20.03.28</td>
+                        <td>301</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td>일년만에 들어왔네요. 반일치이식 4년차</td>
                         <td>안녕</td>
                         <td>20.03.19</td>
+                        <td>403</td>
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>딸아이 전처치 2일차 지났어요</td>
                         <td>유니혀니맘</td>
                         <td>20.03.17</td>
+                        <td>330</td>
                     </tr> -->
                 </tbody>
             {% else %}
                 <p>검색결과가 없습니다.</p>
             {% endif %}
             </table>
-            <button><a href="{% url 'new_hd' %}">글쓰기</a></button>
-            
+            <button><a href="{% url 'write' %}">글쓰기</a></button>
         </div>
-
 {% endblock main %}

@@ -142,12 +142,6 @@ button {
         padding:6px;
         margin-top:20px;
     }
-    .wrap .notice select{
-        width:280px;
-        height:30px;
-        margin-top:10px;
-        border: 1px solid rgb(207, 210, 213);
-    }
     .wrap .notice form{
         margin-top:12px;
     }

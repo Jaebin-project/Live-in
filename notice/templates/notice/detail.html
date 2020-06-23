@@ -1,41 +1,93 @@
-{% extends 'main/base.html' %}
-{% load static %}
+{% load  static %}
 
-{% block head %}
-<link rel="stylesheet" href="{% static 'notice/detail.css' %}" type="text/css" />
-{% endblock head %}
-
-{% block main %}
-<div class="main">
-    <div class="black"></div>
-    <div class="main_wrap">
-        <h3><img src="../../static/notice/img/main_text.png" alt="" /></h3>
-    </div>
-</div>
-<div class="notice">
-    <!-- <div class=notice_title>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'notice/detail.css' %}" type="text/css"/>
+    <title>Notice - Detail</title>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo">
+                <h1><a href="{% url 'main' %}"><img src="../../static/notice/img/logo.png" alt=""/></a></h1>
+            </div>
+            <nav class="clearfix">
+                <div class="find">
+                    <img src="../../static/notice/img/find.png" alt=""/>
+                </div>
+                <ul class="clearfix">
+                    <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
+                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
+                    <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
+                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
+                </ul>
+                <div class="time">
+                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
+                </div>
+            </nav>
+        </header>
+        <div class="main">
+            <div class="black"></div>
+            <div class="main_wrap">
+                <h3><img src="../../static/notice/img/main_text.png" alt=""/></h3>
+            </div>
+        </div>
+        <div class="notice">
+            <div class=notice_title>
                 <button><a href="{% url 'notice' %}">목록</a></button>
-            </div> -->
-    <div class="notice_body">
-        <span>재빈 이해하기</span>
-        <h3>{{ board.title }}</h3>
-        <span>{{ board.pub_date }}</span>
-        <p>{{ board.content }}</p>
-        <button><a href="{% url 'edit' pk=board.pk %}">수정</a></button>
-        <button><a href="{% url 'remove' pk=board.pk %}">삭제</a></button>
+            </div>
+            <div class="notice_body">
+                <span>재빈 이해하기</span>
+                <h3>{{ board.title }}</h3>
+                <span>{{ board.pub_date }}</span>
+                <p>{{ board.content }}</p>
+                <button><a href="{% url 'edit' pk=board.pk %}">수정</a></button>
+                <button><a href="{% url 'remove' pk=board.pk %}">삭제</a></button>
+            </div>
+            <div class="comment_list">
+                {% for comment in board.comments.all %}
+                {{ comment.content }}
+                <button><a href="{% url 'remove_comment' comment.pk %}">삭제</a></button>
+                {% endfor %}
+            </div>
+            <div class="comment_write">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input class='btn' type='submit' value="등록">
+                </form>
+            </div>
+        </div>
+        <footer>
+            <a href="{% url 'main' %}"><img src="../../static/notice/img/footer_logo.png" alt=""/></a>
+            <img src="../../static/notice/img/footer_text.png" alt=""/>
+        </footer>
     </div>
-    <div class="comment_list">
-        {% for comment in board.comments.all %}
-        {{ comment.content }}
-        <button><a href="{% url 'remove_comment' comment.pk %}">삭제</a></button>
-        {% endfor %}
-    </div>
-    <div class="comment_write">
-        <form method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <input class='btn' type='submit' value="등록">
-        </form>
-    </div>
-</div>
-{% endblock main %}
+</body>
+</html>
+<!--
+<h1>{{ board.title }}</h1>
+<p>{{ board.pub_date }}</p>
+<p>{{ board.content }}</p>
+<br><br>
+<button><a href="{% url 'edit' pk=board.pk %}">수정</a></button>
+<button><a href="{% url 'remove' pk=board.pk %}">삭제</a></button>
+<button><a href="{% url 'notice' %}">목록으로</a></button>
+
+ 댓글작성
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input class='btn' type='submit' value="댓글쓰기">
+</form>
+
+ 댓글목록
+{% for comment in board.comments.all %}
+    {{ comment.content }}
+    <button><a href="{% url 'remove_comment' comment.pk %}">삭제</a></button>
+{% endfor %}
+
+-->

@@ -25,8 +25,10 @@ $(document).ready(function(){
         }
     });
 
-    $('#close').click(function(){
+    $('.close').click(function(){
         $('.modal_back').css('display','none');
-        $('.modal').css('display','none');
+        $('.modal1').css('display','none');
+        $('.modal2').css('display','none');
+        $('.modal3').css('display','none');
     });
-})
+});

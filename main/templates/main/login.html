@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'main/login.css' %}" type="text/css"/>
+    <script src="../../static/main/js/jquery-3.5.0.js" type="text/javascript" text="javascript"></script>
+    <script src="../../static/main/js/numeric.js" type="text/javascript" text="javascript"></script>
+    <title>Jaebin Project</title>
+    <Style>
+        .wrap header nav{
+            margin-top:20px;
+        }
+        .wrap .food_list .food_list_wrap form{
+            margin-left:424px;
+        }
+        .wrap .food_list .food_list_wrap form label{
+            color:#fff;
+            margin-right:24px;
+        }
+        .wrap header{
+            position:relative;
+        }
+        .wrap .login{
+            position:absolute;
+            top:30px;
+            left:1050px;
+        }
+        .wrap .login span{
+            font-size:14px;
+            float:left;
+            color: #53544f;
+            font-weight:500;
+        }
+        .wrap .login a:nth-child(2) span{
+            margin-left:6px;
+        }
+        .container{
+            width:600px;
+            margin:0 auto;
+            margin-top:80px;
+        }
+        .container input:nth-child(4){
+            margin-top:16px;
+        }
+    </Style>
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo">
+                <h1><a href="{% url 'main' %}"><img src="../../static/main/img/logo.png" alt=""/></a></h1>
+            </div>
+            <div class="login">
+                <a href="{% url 'login' %}"><span>로그인</span></a>
+                <a href="{% url 'new_user' %}"><span>회원가입</span></a>
+            </div>
+            <nav class="clearfix">
+                <div class="find">
+                    <img src="../static/main/img/find.png" alt=""/>
+                </div>
+                <ul class="clearfix">
+                    <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
+                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
+                    <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
+                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
+                </ul>
+                <div class="time">
+                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
+                </div>
+            </nav>
+        </header>
+        <div class="main">
+            <div class="black"></div>
+            <div class="main_wrap">
+                <h3><img src="../../static/main/img/login_title.png" alt=""/></h3>
+            </div>
+        </div>
+        <div class="container" id="container">
+            <form action="#">
+                <h1>Live in : 로그인</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>로그인 후 마이페이지에서 편리한 진료기록 혜택을 누리세요.</span>
+                <input type="text" placeholder="아이디" />
+                <input type="password" placeholder="비밀번호" />
+                <a href="#">아이디 or 비밀번호 찾기</a>
+                <button>로그인</button>
+            </form>
+        </div>
+        <footer>
+            <a href="{% url 'main' %}"><img src="../static/main/img/footer_logo.png" alt=""/></a>
+            <img src="../static/main/img/footer_text.png" alt=""/>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaebin Project</title>
+    {% block head %}
+    {% endblock head %}
+</head>
+<body>
+    <div class="wrap">
+        <header>
+            <div class="logo">
+                <h1><a href="{% url 'main' %}"><img src="../static/main/img/logo.png" alt=""/></a></h1>
+            </div>
+            <nav class="clearfix">
+                <div class="find">
+                    <img src="../static/main/img/find.png" alt=""/>
+                </div>
+                <ul class="clearfix">
+                    <li><h2><a href="{% url 'find' %}">병원 의사 찾기</a></h2></li>
+                    <li><h2><a href="{% url 'notice' %}">재빈 이해하기</a></h2></li>
+                    <li><h2><a href="{% url 'health_diary' %}">투병 일기</a></h2></li>
+                    <li><h2><a href="{% url 'mypage' %}">마이페이지</a></h2></li>
+                </ul>
+                <div class="time">
+                    <h2><a href="{% url 'mypage' %}">진료시간</a></h2>
+                </div>
+            </nav>
+        </header>
+        {% block main %}
+        {% endblock main %}
+        <footer>
+            <a href="{% url 'main' %}"><img src="../static/main/img/footer_logo.png" alt=""/></a>
+            <img src="../static/main/img/footer_text.png" alt=""/>
+        </footer>
+    </div>
+    {% block js %}
+    {% endblock js %}
+</body>
+</html>

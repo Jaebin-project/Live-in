@@ -1,0 +1,289 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'main/layout.css'%}" type="text/css" />
+<script src="../../static/main/js/jquery-3.5.0.js" type="text/javascript" text="javascript"></script>
+<script src="../../static/main/js/numeric.js" type="text/javascript" text="javascript"></script>
+<Style>
+    .wrap header .logo {
+        width: 230px;
+    }
+
+    .wrap header .logo img {
+        margin-top: 54px;
+    }
+
+    .wrap header nav {
+        margin-top: 20px;
+    }
+
+    .wrap .food_list .food_list_wrap form {
+        margin-left: 424px;
+    }
+
+    .wrap .food_list .food_list_wrap form label {
+        color: #fff;
+        margin-right: 24px;
+    }
+</Style>
+{% endblock head %}
+
+{% block main %}
+<div class="main">
+    <div class="black_opacity"></div>
+    <div class="main_wrap">
+        <img src="../static/main/img/main_text.png" alt="" />
+    </div>
+</div>
+<div class="info">
+    <h3><img src="../static/main/img/info_main_text.png" alt="" /></h3>
+    <div class="info_text">
+        <img src="../static/main/img/info_text.png" alt="" />
+        <img src="../static/main/img/info_icon.png" alt="" />
+        <span>재빈에 대한 궁금한 점 알아보기</span>
+        <img src="../static/main/img/food_icon.png" alt="" />
+        <span>조절해야 하는 식단과 운동방법 알아보기</span>
+    </div>
+    <div class="info_img">
+        <img src="../static/main/img/health.png" alt="" />
+    </div>
+</div>
+<div class="food_list">
+    <div class="food_list_wrap">
+        <h3><img src="../static/main/img/list_title.png" alt="" /></h3>
+        <form>
+            <label>호중구 수</label><input type="text" name="rbc" id="rbc" placeholder="200 ~ 2000 수치 입력"
+                numberonly="true" />입방 밀리미터<br />
+            <label>혈소판 수</label><input type="text" name="pt" id="pt" placeholder="10000 ~ 80000 수치 입력"
+                numberonly="true" />입방 밀리미터<br />
+            <label>그물적혈구 수</label><input type="text" name="wbc" id="wbc" placeholder="10000 ~ 100000 수치 입력"
+                numberonly="true" />입방 밀리미터
+        </form>
+        <button id="submit">자가진단 Start</button>
+    </div>
+</div>
+<div class="modal_back"></div>
+<div class="modal modal1">
+    <div class="modal_title">
+        <h3>중증도 검사 결과</h3>
+    </div>
+    <div class="modal_body">
+        <div class="status">
+            <img src="../../static/main/img/status1.png" alt="" />
+        </div>
+        <h4>중증 재생 불량성 빈혈</h4>
+        최근의 치료 성적의 향상에 의해, 골수 이식이 중증 재생 불량성 빈혈의 치료에 우선적으로 선택됩니다. 수혈 이력이 적으면 적을수록 이식의 치료 성적이 좋기 것이기 때문에, 중증이라고 진단되었을 경우에는
+        가족내에서 HLA 검사를 시급하게 행하여 이식이 가능한 전문 시설에 전원하는 것이 바람직하다고 생각할 수 있습니다.
+        HLA가 일치하는 확률은 형제 자매 사이에는 1/4이고 드물게는 부모님과 일치하기도 합니다. 가족 중에서 HLA의 완전 일치 기증자가 발견되지 않는 경우에는 골수 은행을 통해서 비혈연 사이의 적합
+        기증자를 찾을 수 있습니다.
+        HLA 일치 기증자를 얻을 수 없는 경우이거나, 40세 이상의 골수 이식에 의하여 좋은 치료 성적을 얻지 못하고 있는 성인에서는, 면역 억제 요법이 행해집니다.
+        항린파구 글로블린(ALG), 항흉선린파구 글로블린(ATG), 사이클로스포린 등이 단독 또는 병용하여 투여됩니다.
+        면역 억제 요법은 치료를 개시하고 나서 효과를 얻을 수 있기까지는, 2~3개월을 필요로 합니다.
+
+        <h4>허용 & 제한 식품</h4>
+        <table>
+            <tr>
+                <td>음식의 종류</td>
+                <td>허용식품</td>
+                <td>제한식품</td>
+            </tr>
+            <tr>
+                <td>야채 및 곡류</td>
+                <td>껍질을 벗길 수 있는 생 야재, 오이, 양배추, 호박잎 등 삶은 쌈</td>
+                <td>상추, 깻잎, 케일, 청경채, 겨자잎, 생식</td>
+            </tr>
+            <tr>
+                <td>생선 또는 해산물</td>
+                <td>잘 익힌생선(구이, 조림), 미역국, 김구이</td>
+                <td>회, 어패류, 건어물, 젓갈류(익혀도 불가)</td>
+            </tr>
+            <tr>
+                <td>차와 간식류</td>
+                <td>캔음료, 1회용 병음료, 과자, 빵류(크림이나 팥이 들어가지 않은 1회용 포장된 것)</td>
+                <td>꿀, 식혜, 수정과, 건포도, 곶감, 초콜렛</td>
+            </tr>
+            <tr>
+                <td>기타음식</td>
+                <td>볶은 김치, 찌개, 정육점 육류, 사골, 삼계탕, 레또르(3분요리), 낱개 포장 케첩</td>
+                <td>생김치, 생고추장, 생된장, 간장, 날달걀, 날두부, 단무지, 피클, 장아찌, 족발, 곱창, 내장탕, 보신탕, 흑염소, 사냥한 고기와 가금류, 거리에서 파는 음식(떡볶이, 순대)
+                </td>
+            </tr>
+            <tr>
+                <td>한약제</td>
+                <td>인삼, 홍삼, 송이버섯, 표고버섯, 느타리버섯 등 식용버섯</td>
+                <td>모든 한약제가 포함된 음식, 영지버섯, 상황 버섯, 아가리쿠스 버섯<br />
+                    ※약재에 따라 골수기능을 저하시키거나 먹는 약재의 효과에 영향을 미칠 수 있습니다.</td>
+            </tr>
+            <tr>
+                <td>영양보조제</td>
+                <td>비타민제</td>
+                <td>비타민제 외에는 불가</td>
+            </tr>
+        </table>
+    </div>
+    <button id="close">Close</button>
+</div>
+<div class="modal modal2">
+    <div class="modal_title">
+        <h3>중증도 검사 결과</h3>
+    </div>
+    <div class="modal_body">
+        <div class="status">
+            <img src="../../static/main/img/status2.png" alt="" />
+        </div>
+        <h4>중증 재생 불량성 빈혈</h4>
+        최근의 치료 성적의 향상에 의해, 골수 이식이 중증 재생 불량성 빈혈의 치료에 우선적으로 선택됩니다. 수혈 이력이 적으면 적을수록 이식의 치료 성적이 좋기 것이기 때문에, 중증이라고 진단되었을 경우에는
+        가족내에서 HLA 검사를 시급하게 행하여 이식이 가능한 전문 시설에 전원하는 것이 바람직하다고 생각할 수 있습니다.
+        HLA가 일치하는 확률은 형제 자매 사이에는 1/4이고 드물게는 부모님과 일치하기도 합니다. 가족 중에서 HLA의 완전 일치 기증자가 발견되지 않는 경우에는 골수 은행을 통해서 비혈연 사이의 적합
+        기증자를 찾을 수 있습니다.
+        HLA 일치 기증자를 얻을 수 없는 경우이거나, 40세 이상의 골수 이식에 의하여 좋은 치료 성적을 얻지 못하고 있는 성인에서는, 면역 억제 요법이 행해집니다.
+        항린파구 글로블린(ALG), 항흉선린파구 글로블린(ATG), 사이클로스포린 등이 단독 또는 병용하여 투여됩니다.
+        면역 억제 요법은 치료를 개시하고 나서 효과를 얻을 수 있기까지는, 2~3개월을 필요로 합니다.
+
+        <h4>허용 & 제한 식품</h4>
+        <table>
+            <tr>
+                <td>음식의 종류</td>
+                <td>허용식품</td>
+                <td>제한식품</td>
+            </tr>
+            <tr>
+                <td>과일</td>
+                <td>껍질을 벗길 수 있는 과일, 수박, 참외, 오렌지, 귤, 사과, 키위, 복숭아</td>
+                <td>딸기, 포도, 바나나</td>
+            </tr>
+            <tr>
+                <td>야채 및 곡류</td>
+                <td>껍질을 벗길 수 있는 생 야재, 오이, 양배추, 호박잎 등 삶은 쌈</td>
+                <td>상추, 깻잎, 케일, 청경채, 겨자잎, 생식</td>
+            </tr>
+            <tr>
+                <td>생선 또는 해산물</td>
+                <td>잘 익힌생선(구이, 조림), 미역국, 김구이</td>
+                <td>회, 어패류, 건어물, 젓갈류(익혀도 불가)</td>
+            </tr>
+            <tr>
+                <td>우유 및 유제품</td>
+                <td>멸균우유, 멸균두유, 슬라이스 치즈</td>
+                <td>살균우유, 요구르트, 생크림, 아이스크림, 마요네즈, 발효된 치즈</td>
+            </tr>
+            <tr>
+                <td>차와 간식류</td>
+                <td>캔음료, 1회용 병음료, 과자, 빵류(크림이나 팥이 들어가지 않은 1회용 포장된 것)</td>
+                <td>꿀, 식혜, 수정과, 건포도, 곶감, 초콜렛</td>
+            </tr>
+            <tr>
+                <td>기타음식</td>
+                <td>볶은 김치, 찌개, 정육점 육류, 사골, 삼계탕, 레또르(3분요리), 낱개 포장 케첩</td>
+                <td>생김치, 생고추장, 생된장, 간장, 날달걀, 날두부, 단무지, 피클, 장아찌, 족발, 곱창, 내장탕, 보신탕, 흑염소, 사냥한 고기와 가금류, 거리에서 파는 음식(떡볶이, 순대)
+                </td>
+            </tr>
+            <tr>
+                <td>한약제</td>
+                <td>인삼, 홍삼, 송이버섯, 표고버섯, 느타리버섯 등 식용버섯</td>
+                <td>모든 한약제가 포함된 음식, 영지버섯, 상황 버섯, 아가리쿠스 버섯<br />
+                    ※약재에 따라 골수기능을 저하시키거나 먹는 약재의 효과에 영향을 미칠 수 있습니다.</td>
+            </tr>
+            <tr>
+                <td>영양보조제</td>
+                <td>비타민제</td>
+                <td>비타민제 외에는 불가</td>
+            </tr>
+        </table>
+    </div>
+    <button id="close">Close</button>
+</div>
+<div class="modal modal3">
+    <div class="modal_title">
+        <h3>중증도 검사 결과</h3>
+    </div>
+    <div class="modal_body">
+        <div class="status">
+            <img src="../../static/main/img/status3.png" alt="" />
+        </div>
+        <h4>중증 재생 불량성 빈혈</h4>
+        최근의 치료 성적의 향상에 의해, 골수 이식이 중증 재생 불량성 빈혈의 치료에 우선적으로 선택됩니다. 수혈 이력이 적으면 적을수록 이식의 치료 성적이 좋기 것이기 때문에, 중증이라고 진단되었을 경우에는
+        가족내에서 HLA 검사를 시급하게 행하여 이식이 가능한 전문 시설에 전원하는 것이 바람직하다고 생각할 수 있습니다.
+        HLA가 일치하는 확률은 형제 자매 사이에는 1/4이고 드물게는 부모님과 일치하기도 합니다. 가족 중에서 HLA의 완전 일치 기증자가 발견되지 않는 경우에는 골수 은행을 통해서 비혈연 사이의 적합
+        기증자를 찾을 수 있습니다.
+        HLA 일치 기증자를 얻을 수 없는 경우이거나, 40세 이상의 골수 이식에 의하여 좋은 치료 성적을 얻지 못하고 있는 성인에서는, 면역 억제 요법이 행해집니다.
+        항린파구 글로블린(ALG), 항흉선린파구 글로블린(ATG), 사이클로스포린 등이 단독 또는 병용하여 투여됩니다.
+        면역 억제 요법은 치료를 개시하고 나서 효과를 얻을 수 있기까지는, 2~3개월을 필요로 합니다.
+
+        <h4>허용 & 제한 식품</h4>
+        <table>
+            <tr>
+                <td>음식의 종류</td>
+                <td>허용식품</td>
+                <td>제한식품</td>
+            </tr>
+            <tr>
+                <td>과일</td>
+                <td>껍질을 벗길 수 있는 과일, 수박, 참외, 오렌지, 귤, 사과, 키위, 복숭아</td>
+                <td>딸기, 포도, 바나나</td>
+            </tr>
+            <tr>
+                <td>야채 및 곡류</td>
+                <td>껍질을 벗길 수 있는 생 야재, 오이, 양배추, 호박잎 등 삶은 쌈</td>
+                <td>상추, 깻잎, 케일, 청경채, 겨자잎, 생식</td>
+            </tr>
+            <tr>
+                <td>생선 또는 해산물</td>
+                <td>잘 익힌생선(구이, 조림), 미역국, 김구이</td>
+                <td>회, 어패류, 건어물, 젓갈류(익혀도 불가)</td>
+            </tr>
+            <tr>
+                <td>우유 및 유제품</td>
+                <td>멸균우유, 멸균두유, 슬라이스 치즈</td>
+                <td>살균우유, 요구르트, 생크림, 아이스크림, 마요네즈, 발효된 치즈</td>
+            </tr>
+            <tr>
+                <td>차와 간식류</td>
+                <td>캔음료, 1회용 병음료, 과자, 빵류(크림이나 팥이 들어가지 않은 1회용 포장된 것)</td>
+                <td>꿀, 식혜, 수정과, 건포도, 곶감, 초콜렛</td>
+            </tr>
+            <tr>
+                <td>기타음식</td>
+                <td>볶은 김치, 찌개, 정육점 육류, 사골, 삼계탕, 레또르(3분요리), 낱개 포장 케첩</td>
+                <td>생김치, 생고추장, 생된장, 간장, 날달걀, 날두부, 단무지, 피클, 장아찌, 족발, 곱창, 내장탕, 보신탕, 흑염소, 사냥한 고기와 가금류, 거리에서 파는 음식(떡볶이, 순대)
+                </td>
+            </tr>
+            <tr>
+                <td>한약제</td>
+                <td>인삼, 홍삼, 송이버섯, 표고버섯, 느타리버섯 등 식용버섯</td>
+                <td>모든 한약제가 포함된 음식, 영지버섯, 상황 버섯, 아가리쿠스 버섯<br />
+                    ※약재에 따라 골수기능을 저하시키거나 먹는 약재의 효과에 영향을 미칠 수 있습니다.</td>
+            </tr>
+            <tr>
+                <td>영양보조제</td>
+                <td>비타민제</td>
+                <td>비타민제 외에는 불가</td>
+            </tr>
+            <tr>
+                <td>기타 조리 음식</td>
+                <td>만두, 연어, 육회, 두부, 생선(구이, 조림)</td>
+                <td>호두, 땅콩 등 견과류, 오징어, 엿, 사탕, 얼음</td>
+            </tr>
+        </table>
+    </div>
+    <button id="close">Close</button>
+</div>
+<div class="diary">
+    <h3><img src="../static/main/img/from_the_health_diary.png" alt="" /></h3>
+    <div class="diary_notice">
+        <span>이식 후 수치는 언제부터?</span>
+        <span>보통 뜨는 지 궁금하네요 오늘로 이틀 째 되었지만 궁금해서요</span>
+        <span>두번 채집 두번 이식</span>
+        <span>어제 이식 디데이였어요. 공여자 동생이 아직 개월수가 어려</span>
+        <span>전처치 끝 공여자 동생 입원</span>
+        <span>드디어 7일간의 전처치가 끝나고 오늘은 휴식타임</span>
+        <span>전처치 5일차</span>
+        <span>전처치 3일 째, 플루다라 싸이톡신 후 살짝 소변에 혈이 1개정도 보이고</span>
+        <button><a href="#">투병일기 보러가기</a></button>
+    </div>
+    <div class="diary_img">
+        <img src="../static/main/img/health2.png" alt="">
+    </div>
+</div>
+{% endblock %}
